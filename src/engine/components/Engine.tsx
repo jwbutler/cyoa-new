@@ -1,20 +1,15 @@
-import * as React from 'react';
-import type { ReactElement, ReactNode } from 'react';
 import { useApi } from '../api/api';
 import { checkNotNull } from '../../preconditions';
 import { ApiContext } from '../api/ApiContext';
-
-export type SceneType = ({
-  api: GameApi
-}) => ReactElement;
+import type { ComponentChildren, ComponentChild } from 'preact';
 
 export type ContainerProps = Readonly<{
-  children: ReactNode
+  children: ComponentChildren
 }>;
-export type ContainerComponent = (props: ContainerProps) => ReactElement;
+export type ContainerComponent = ({ children }: ContainerProps) => ComponentChild;
 
 type Props = Readonly<{
-  scenes: Record<string, SceneType>,
+  scenes: Record<string, ComponentChild>,
   initialScene: string,
   player: {
     inventory: string[],

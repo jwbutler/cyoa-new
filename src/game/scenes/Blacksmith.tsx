@@ -1,8 +1,7 @@
 import { Scene } from '../components/Scene';
-import type { GameApi } from '../../engine/api/api';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { useContext } from 'react';
+import { useContext } from 'preact/compat';
 
 type Props = Readonly<{}>;
 

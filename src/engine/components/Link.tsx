@@ -1,12 +1,12 @@
-import type { ReactNode } from 'react';
 import './Link.css';
 import { ApiContext } from '../api/ApiContext';
-import { useContext } from 'react';
+import type { ComponentChildren } from 'preact';
+import { useContext } from 'preact/compat';
 
 export type Props = Readonly<{
   to?: string,
   onClick?: () => void,
-  children: ReactNode
+  children: ComponentChildren
 }>;
 
 export const Link = ({ to, onClick, children }: Props) => {

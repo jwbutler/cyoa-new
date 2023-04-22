@@ -1,7 +1,7 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { useContext } from 'react';
+import { useContext } from 'preact/compat';
 
 type Props = Readonly<{}>;
 
@@ -9,7 +9,6 @@ type SpellListing = Readonly<{
   name: string,
   cost: number
 }>;
-
 
 export const SpellShop = ({}: Props) => {
   const api = useContext(ApiContext);

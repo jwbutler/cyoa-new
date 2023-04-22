@@ -1,9 +1,12 @@
-import * as React from 'react';
-import type { ContainerComponent } from '../../engine/components/Engine';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { useContext } from 'react';
+import { useContext } from 'preact/compat';
+import { ComponentChildren } from 'preact';
 
-export const Container: ContainerComponent = ({ children }) => {
+type Props = Readonly<{
+  children: ComponentChildren
+}>;
+
+export const Container = ({ children }: Props) => {
   const api = useContext(ApiContext);
   const { player } = api;
   return (

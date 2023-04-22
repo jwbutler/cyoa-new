@@ -1,8 +1,8 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
-import type { ReactElement } from 'react';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { useContext } from 'react';
+import { useContext } from 'preact/compat';
+import { type JSX } from 'preact';
 
 type Props = Readonly<{}>;
 
@@ -12,7 +12,7 @@ export const TavernFarmer = ({}: Props) => {
   const api = useContext(ApiContext);
   const hasAcceptedQuest = (): boolean => api.player.quests.includes(questName);
 
-  let content: ReactElement;
+  let content: JSX.Element;
   if (hasAcceptedQuest()) {
     content = (
       <p>

@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true
   },

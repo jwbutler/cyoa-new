@@ -14,11 +14,13 @@ export const Link = ({ to, onClick, children }: Props) => {
   return (
     <a
       className="link"
+      href="#"
       onClick={e => {
         onClick?.();
         if (to) {
           api.setScene(to);
         }
+        e.preventDefault();
       }}
     >
       {children}

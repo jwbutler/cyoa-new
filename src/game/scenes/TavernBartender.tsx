@@ -1,12 +1,9 @@
-import { Scene } from '../components/Scene';
-import { Link } from '../components/Link';
-import type { GameApi } from '../api';
+import { Scene } from '../../engine/components/Scene';
+import { Link } from '../../engine/components/Link';
 
-type Props = Readonly<{
-  api: GameApi
-}>;
+type Props = Readonly<{}>;
 
-export const TavernBartender = ({ api }: Props) => {
+export const TavernBartender = ({}: Props) => {
   return (
     <Scene title="Tavern">
       <p>

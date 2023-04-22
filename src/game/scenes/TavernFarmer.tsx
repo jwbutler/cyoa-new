@@ -1,15 +1,16 @@
-import { Scene } from '../components/Scene';
-import { Link } from '../components/Link';
-import type { GameApi } from '../api';
+import { Scene } from '../../engine/components/Scene';
+import { Link } from '../../engine/components/Link';
+import type { GameApi } from '../../engine/api/api';
 import type { ReactElement } from 'react';
+import { ApiContext } from '../../engine/api/ApiContext';
+import { useContext } from 'react';
 
-type Props = Readonly<{
-  api: GameApi
-}>;
+type Props = Readonly<{}>;
 
 const questName = 'farmer_kobolds';
 
-export const TavernFarmer = ({ api }: Props) => {
+export const TavernFarmer = ({}: Props) => {
+  const api = useContext(ApiContext);
   const hasAcceptedQuest = (): boolean => api.player.quests.includes(questName);
 
   let content: ReactElement;

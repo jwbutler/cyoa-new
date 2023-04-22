@@ -1,10 +1,9 @@
-import { Scene } from '../components/Scene';
-import { GameApi } from '../api';
-import { Link } from '../components/Link';
+import { Scene } from '../../engine/components/Scene';
+import { Link } from '../../engine/components/Link';
+import { ApiContext } from '../../engine/api/ApiContext';
+import { useContext } from 'react';
 
-type Props = Readonly<{
-  api: GameApi
-}>;
+type Props = Readonly<{}>;
 
 type SpellListing = Readonly<{
   name: string,
@@ -12,8 +11,9 @@ type SpellListing = Readonly<{
 }>;
 
 
-export const SpellShop = ({ api }: Props) => {
-  const { buyItem, player } = api;
+export const SpellShop = ({}: Props) => {
+  const api = useContext(ApiContext);
+  const { buySpell, player } = api;
 
   type SpellLinkProps = {
     spell: SpellListing
@@ -25,7 +25,7 @@ export const SpellShop = ({ api }: Props) => {
       if (cost > player.gold) {
         api.alert('Not enough gold');
       } else {
-        buyItem(name, cost);
+        buySpell(name, cost);
       }
     };
 
@@ -52,7 +52,7 @@ export const SpellShop = ({ api }: Props) => {
         <ul>
           {spells.map(spell => (
             !playerHasSpell(spell) && (
-              <li>
+              <li key={spell.name}>
                 <SpellLink spell={spell} />
               </li>
             )

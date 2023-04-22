@@ -3,6 +3,7 @@
   font-family: sans-serif;
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .link:visited {

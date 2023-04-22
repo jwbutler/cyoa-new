@@ -1,17 +1,18 @@
-import { Scene } from '../components/Scene';
-import type { GameApi } from '../api';
-import { Link } from '../components/Link';
+import { Scene } from '../../engine/components/Scene';
+import type { GameApi } from '../../engine/api/api';
+import { Link } from '../../engine/components/Link';
+import { ApiContext } from '../../engine/api/ApiContext';
+import { useContext } from 'react';
 
-type Props = Readonly<{
-  api: GameApi
-}>;
+type Props = Readonly<{}>;
 
 type ItemListing = Readonly<{
   name: string,
   cost: number
 }>;
 
-export const Blacksmith = ({ api }: Props) => {
+export const Blacksmith = ({}: Props) => {
+  const api = useContext(ApiContext);
   const { player, buyItem } = api;
 
   type ItemLinkProps = {
@@ -50,7 +51,7 @@ export const Blacksmith = ({ api }: Props) => {
       <ul>
         {items.map(item => (
           !playerHasItem(item) && (
-            <li>
+            <li key={item.name}>
               <ItemLink item={item} />
             </li>
           )

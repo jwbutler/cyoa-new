@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
-import { Link as ReactRouterLink } from 'react-router-dom';
 import './Link.css';
+import { ApiContext } from '../api/ApiContext';
+import { useContext } from 'react';
 
 export type Props = Readonly<{
   to?: string,
@@ -9,18 +10,18 @@ export type Props = Readonly<{
 }>;
 
 export const Link = ({ to, onClick, children }: Props) => {
+  const api = useContext(ApiContext);
   return (
-    <ReactRouterLink
+    <a
       className="link"
-      to={to ? `/${to}` : '#'}
       onClick={e => {
         onClick?.();
-        if (!to) {
-          e.preventDefault();
+        if (to) {
+          api.setScene(to);
         }
       }}
     >
       {children}
-    </ReactRouterLink>
+    </a>
   );
 };

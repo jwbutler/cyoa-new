@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Town } from './scenes/Town';
-import { Blacksmith } from './scenes/Blacksmith';
+import { Town } from './game/scenes/Town';
+import { Blacksmith } from './game/scenes/Blacksmith';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { Engine, type SceneType } from './components/Engine';
-import { SpellShop } from './scenes/SpellShop';
-import { Tavern } from './scenes/Tavern';
-import { TavernBartender } from './scenes/TavernBartender';
-import { TavernFarmer } from './scenes/TavernFarmer';
-import { Container } from './components/Container';
-import { Dungeon } from './scenes/Dungeon';
+import { Engine, type SceneType } from './engine/components/Engine';
+import { SpellShop } from './game/scenes/SpellShop';
+import { Tavern } from './game/scenes/Tavern';
+import { TavernBartender } from './game/scenes/TavernBartender';
+import { TavernFarmer } from './game/scenes/TavernFarmer';
+import { Container } from './game/components/Container';
+import { Dungeon } from './game/scenes/Dungeon';
 
 type SceneName =
   | 'blacksmith'
@@ -37,7 +37,13 @@ const App = () => {
       <Engine
         scenes={scenes}
         initialScene="town"
-        container={Container}
+        Container={Container}
+        player={{
+          inventory: [],
+          spells: [],
+          quests: [],
+          gold: 500
+        }}
       />
     </React.StrictMode>
   );

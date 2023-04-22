@@ -1,5 +1,8 @@
 .link {
   color: var(--color-link);
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .link:visited {
@@ -8,4 +11,5 @@
 
 .link:hover,.link:active {
   color: var(--color-link-active);
+  text-decoration: underline;
 }

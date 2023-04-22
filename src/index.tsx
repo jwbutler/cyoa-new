@@ -32,19 +32,17 @@ const scenes: Record<SceneName, ComponentChild> = {
 
 const App = () => {
   return (
-    <React.StrictMode>
-      <Engine
-        scenes={scenes}
-        initialScene="town"
-        Container={Container}
-        player={{
-          inventory: [],
-          spells: [],
-          quests: [],
-          gold: 500
-        }}
-      />
-    </React.StrictMode>
+    <Engine
+      scenes={scenes}
+      initialScene="town"
+      Container={Container}
+      player={{
+        inventory: [],
+        spells: [],
+        quests: [],
+        gold: 500
+      }}
+    />
   );
 };
 

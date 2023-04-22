@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { checkArgument } from '../../preconditions';
+import { useState } from 'preact/compat';
 
 export type Player = Readonly<{
   inventory: string[],
@@ -38,18 +38,18 @@ export const useApi = (props: Props): GameApi => {
 
   const buyItem = (itemName: string, cost: number) => {
     checkArgument(cost <= player.gold);
-    setPlayer({
+    setPlayer(player => ({
       ...player,
       gold: player.gold - cost,
       inventory: [...player.inventory, itemName]
-    });
+    }));
     setMessage(`Bought a ${itemName}`);
   };
 
   const buySpell = (spellName: string, cost: number) => {
     checkArgument(cost <= player.gold);
     setPlayer({
-      ...player,
+      ...player!,
       gold: player.gold - cost,
       spells: [...player.spells, spellName]
     });
@@ -58,7 +58,7 @@ export const useApi = (props: Props): GameApi => {
 
   const acceptQuest = (questName: string) => {
     setPlayer({
-      ...player,
+      ...player!,
       quests: [...player.quests, questName]
     });
     console.log('wtf');
@@ -71,7 +71,7 @@ export const useApi = (props: Props): GameApi => {
       setScene(sceneName);
       setMessage(null);
     },
-    player,
+    player: player!,
     message,
     setMessage,
     buyItem,

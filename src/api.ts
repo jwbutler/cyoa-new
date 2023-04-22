@@ -1,35 +1,52 @@
 import { useState } from 'react';
+import { checkArgument } from './preconditions';
 
-export type GameState = {
+export type Player = {
   inventory: string[],
+  quests: string[],
   gold: number
 };
 
-export type GameAPI = {
-  state: GameState,
-  buyItem: (itemName: string, cost: number) => void
+export type GameApi = {
+  player: Player,
+  buyItem: (itemName: string, cost: number) => void,
+  acceptQuest: (questName: string) => void,
+  alert: (message: string) => void
 };
 
-export const useApi = (): GameAPI => {
-  const initialState: GameState = {
+export const useApi = (): GameApi => {
+  const initialPlayer: Player = {
     inventory: [],
+    quests: [],
     gold: 500
   };
 
-  const [state, setState] = useState<GameState>(initialState);
+  const [player, setPlayer] = useState<Player>(initialPlayer);
 
   const buyItem = (itemName: string, cost: number) => {
-    console.log(`buying ${itemName}`);
-    setState(prevState => {
-      const newState = { ...prevState };
-      newState.gold -= cost;
-      newState.inventory = [...prevState.inventory, itemName];
-      return newState;
+    checkArgument(cost <= player.gold);
+    setPlayer({
+      ...player,
+      gold: player.gold - cost,
+      inventory: [...player.inventory, itemName]
     });
   };
 
+  const acceptQuest = (questName: string) => {
+    setPlayer({
+      ...player,
+      quests: [...player.quests, questName]
+    });
+  };
+
+  const alert = (message: string) => {
+    window.alert(message);
+  };
+
   return {
-    state,
-    buyItem
+    player,
+    buyItem,
+    acceptQuest,
+    alert
   };
 };

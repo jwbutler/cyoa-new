@@ -1,4 +1,13 @@
+:root {
+  --color-text: hsl(225, 60%, 80%);
+  --color-background: hsl(270, 45%, 15%);
+  --color-link: hsl(240, 80%, 60%);
+  --color-link-active: hsl(240, 90%, 70%);
+}
+
 body {
-  background-color: hsl(0.5 0.1 0.1);
-  color: hsl(0.5 0.1 0.9);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 24px;
+  font-family: sans-serif;
 }

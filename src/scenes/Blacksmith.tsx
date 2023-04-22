@@ -1,27 +1,56 @@
 import { Scene } from '../components/Scene';
-import { GameAPI } from '../api';
+import { GameApi } from '../api';
 import { Link } from '../components/Link';
 
 type Props = Readonly<{
-  api: GameAPI
+  api: GameApi
 }>;
 
+type ItemListing = Readonly<{
+  name: string,
+  cost: number
+}>;
+
+type ItemLinkProps = {
+  item: ItemListing
+};
+
 export const Blacksmith = ({ api }: Props) => {
-  const { buyItem } = api;
+  const { player, buyItem } = api;
+
+  const ItemLink = ({ item }: ItemLinkProps) => {
+    const { name, cost } = item;
+    const handleClick = () => {
+      if (cost > player.gold) {
+        api.alert('Not enough gold');
+      } else {
+        buyItem(name, cost);
+      }
+    };
+    return (
+      <Link onClick={handleClick}>
+        {name}
+      </Link>
+    );
+  };
+
+  const noobSword = { name: 'Noob Sword', cost: 150 };
+  const awesomeSword = { name: 'Awesome Sword', cost: 1000 };
+  const playerHasItem = (item: ItemListing) => {
+    return player.inventory.includes(item.name);
+  };
+
   return (
     <Scene title="Blacksmith">
       <p>"What do you want?" the blacksmith says roughly.</p>
       <ul>
-        <li>
-          <Link onClick={() => buyItem("noob_sword", 100)}>
-            Noob Sword
-          </Link>
-        </li>
-        <li>
-          <Link onClick={() => buyItem("awesome_sword", 1000)}>
-            Awesome Sword
-          </Link>
-        </li>
+        {[noobSword, awesomeSword].map(item => (
+          !playerHasItem(item) && (
+            <li>
+              <ItemLink item={item} />
+            </li>
+          )
+        ))}
       </ul>
       <p>
         <Link to="town">Back to Town</Link>

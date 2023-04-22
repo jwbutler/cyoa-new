@@ -1,12 +1,12 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../components/Link';
-import { GameAPI } from '../api';
+import { GameApi } from '../api';
 
 type Props = Readonly<{
-  api: GameAPI
+  api: GameApi
 }>;
 
-export const Town = (props: Props) => {
+export const Town = ({ api }: Props) => {
   return (
     <Scene title="Town">
       <p>You're in the middle of a small town with dirt roads.</p>

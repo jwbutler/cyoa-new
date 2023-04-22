@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { ReactElement, useState } from 'react';
-import { useApi } from '../api';
+import { ReactElement, ReactNode } from 'react';
+import { GameApi, useApi } from '../api';
 import { checkNotNull } from '../preconditions';
-import { Route, Routes, useNavigate, useParams } from 'react-router';
+import { MemoryRouter, Route, Routes, useParams } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
 export type SceneType = ({
-  api: GameAPI
+  api: GameApi
 }) => ReactElement;
 
-export type ContainerType = ({
-  api: GameAPI,
+export type ContainerProps = Readonly<{
+  api: GameApi,
   children: ReactNode
-}) => ReactElement;
+}>;
+export type ContainerType = (props: ContainerProps) => ReactElement;
 
 type Props = {
   scenes: Record<string, SceneType>,
@@ -30,7 +31,6 @@ export const Engine = ({ scenes, initialScene, container }: Props) => {
   };
 
   const defaultRoute = () => {
-    console.log('default');
     const scene = checkNotNull(scenes[initialScene]);
     return scene({ api });
   };

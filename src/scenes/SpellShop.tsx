@@ -1,16 +1,16 @@
 import { Scene } from '../components/Scene';
-import { GameAPI } from '../api';
+import { GameApi } from '../api';
 import { Link } from '../components/Link';
 
 type Props = Readonly<{
-  api: GameAPI
+  api: GameApi
 }>;
 
 export const SpellShop = ({ api }: Props) => {
   const { buyItem } = api;
   return (
     <Scene title="Spell Shop">
-      <p>"What do you want?" the spell guy says roughly.</p>
+      <p>"What do you want?" the spell guy says warmly.</p>
       <p>
         <ul>
           <li>

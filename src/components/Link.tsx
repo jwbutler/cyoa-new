@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
+import './Link.css';
 
 export type Props = Readonly<{
   to?: string,

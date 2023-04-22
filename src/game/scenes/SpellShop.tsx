@@ -1,4 +1,4 @@
-import { Scene } from '../../engine/components/Scene';
+import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'react';
@@ -23,7 +23,7 @@ export const SpellShop = ({}: Props) => {
     const { name, cost } = spell;
     const handleClick = () => {
       if (cost > player.gold) {
-        api.alert('Not enough gold');
+        api.setMessage('Not enough gold');
       } else {
         buySpell(name, cost);
       }
@@ -42,23 +42,21 @@ export const SpellShop = ({}: Props) => {
   ];
 
   const playerHasSpell = (spell: SpellListing) => {
-    return player.inventory.includes(spell.name);
+    return player.spells.includes(spell.name);
   };
 
   return (
     <Scene title="Spell Shop">
       <p>"What do you want?" the spell guy says warmly.</p>
-      <p>
-        <ul>
-          {spells.map(spell => (
-            !playerHasSpell(spell) && (
-              <li key={spell.name}>
-                <SpellLink spell={spell} />
-              </li>
-            )
-          ))}
-        </ul>
-      </p>
+      <ul>
+        {spells.map(spell => (
+          !playerHasSpell(spell) && (
+            <li key={spell.name}>
+              <SpellLink spell={spell} />
+            </li>
+          )
+        ))}
+      </ul>
       <p>
         <Link to="town">Back to Town</Link>
       </p>

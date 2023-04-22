@@ -1,4 +1,4 @@
-import { Scene } from '../../engine/components/Scene';
+import { Scene } from '../components/Scene';
 import type { GameApi } from '../../engine/api/api';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
@@ -23,7 +23,7 @@ export const Blacksmith = ({}: Props) => {
     const { name, cost } = item;
     const handleClick = () => {
       if (cost > player.gold) {
-        api.alert('Not enough gold');
+        api.setMessage('Not enough gold');
       } else {
         buyItem(name, cost);
       }

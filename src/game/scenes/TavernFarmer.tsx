@@ -1,6 +1,5 @@
-import { Scene } from '../../engine/components/Scene';
+import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
-import type { GameApi } from '../../engine/api/api';
 import type { ReactElement } from 'react';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'react';
@@ -28,7 +27,6 @@ export const TavernFarmer = ({}: Props) => {
         </p>
         <p>
           <Link
-            to='tavern_farmer'
             onClick={() => api.acceptQuest(questName)}
           >
             Accept Quest
@@ -37,6 +35,7 @@ export const TavernFarmer = ({}: Props) => {
       </>
     );
   }
+
   return (
     <Scene title="Tavern">
       {content}

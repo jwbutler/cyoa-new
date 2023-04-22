@@ -1,4 +1,4 @@
-import { Scene } from '../../engine/components/Scene';
+import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 
 type Props = Readonly<{}>;

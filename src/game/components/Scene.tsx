@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react';
 import './Scene.css';
-import { useContext } from 'react';
 import { ApiContext } from '../../engine/api/ApiContext';
+import { ComponentChildren, JSX } from 'preact';
+import { useContext } from 'preact/compat';
 
 type Props = Readonly<{
   title: string,
-  children: ReactNode
+  children: ComponentChildren
 }>;
 
 export const Scene = ({ title, children }: Props) => {

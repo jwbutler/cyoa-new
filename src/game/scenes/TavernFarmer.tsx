@@ -1,8 +1,8 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { JSX } from 'preact';
 import { useContext } from 'preact/compat';
+import { type JSX } from 'preact';
 
 type Props = Readonly<{}>;
 

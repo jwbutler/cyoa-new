@@ -1,15 +1,14 @@
-import * as React from 'react';
 import { Town } from './game/scenes/Town';
 import { Blacksmith } from './game/scenes/Blacksmith';
-import { createRoot } from 'react-dom/client';
 import './index.css';
-import { Engine, type SceneType } from './engine/components/Engine';
+import { Engine } from './engine/components/Engine';
 import { SpellShop } from './game/scenes/SpellShop';
 import { Tavern } from './game/scenes/Tavern';
 import { TavernBartender } from './game/scenes/TavernBartender';
 import { TavernFarmer } from './game/scenes/TavernFarmer';
 import { Container } from './game/components/Container';
 import { Dungeon } from './game/scenes/Dungeon';
+import { type ComponentChild, render } from 'preact';
 
 type SceneName =
   | 'blacksmith'
@@ -21,7 +20,7 @@ type SceneName =
   | 'town'
   ;
 
-const scenes: Record<SceneName, SceneType> = {
+const scenes: Record<SceneName, ComponentChild> = {
   'blacksmith': Blacksmith,
   'dungeon': Dungeon,
   'spell_shop': SpellShop,
@@ -50,4 +49,4 @@ const App = () => {
 };
 
 const root = document.getElementById('app')!;
-createRoot(root).render(<App />);
+render(<App />, root);

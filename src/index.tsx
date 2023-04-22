@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Town } from './scenes/town';
-import { Blacksmith } from './scenes/blacksmith';
+import { Town } from './scenes/Town';
+import { Blacksmith } from './scenes/Blacksmith';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { Engine, type SceneType } from './components/Engine';

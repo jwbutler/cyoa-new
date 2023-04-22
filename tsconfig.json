@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
-    "jsx": "react"
+    "jsx": "react",
+    "forceConsistentCasingInFileNames": true
   },
   "paths": {
     "*": ["*"]

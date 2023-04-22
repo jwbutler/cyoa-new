@@ -1,6 +1,6 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../components/Link';
-import { GameApi } from '../api';
+import type { GameApi } from '../api';
 
 type Props = Readonly<{
   api: GameApi

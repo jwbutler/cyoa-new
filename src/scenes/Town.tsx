@@ -1,6 +1,6 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../components/Link';
-import { GameApi } from '../api';
+import type { GameApi } from '../api';
 
 type Props = Readonly<{
   api: GameApi
@@ -26,6 +26,13 @@ export const Town = ({ api }: Props) => {
         <li>
           <Link to="tavern">
             Go to the Tavern
+          </Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Link to="dungeon">
+            Enter the Dungeon!
           </Link>
         </li>
       </ul>

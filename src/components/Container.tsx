@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ContainerType } from './Engine';
+import type { ContainerComponent } from './Engine';
 
-export const Container: ContainerType = ({ api, children }) => {
+export const Container: ContainerComponent = ({ api, children }) => {
   const { player } = api;
   return (
     <div>

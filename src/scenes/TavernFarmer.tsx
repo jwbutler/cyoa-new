@@ -1,7 +1,7 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../components/Link';
-import { GameApi } from '../api';
-import { ReactElement, useEffect } from 'react';
+import type { GameApi } from '../api';
+import type { ReactElement } from 'react';
 
 type Props = Readonly<{
   api: GameApi

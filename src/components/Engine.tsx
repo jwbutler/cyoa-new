@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ReactElement, ReactNode } from 'react';
-import { GameApi, useApi } from '../api';
+import type { ReactElement, ReactNode } from 'react';
+import { type GameApi, useApi } from '../api';
 import { checkNotNull } from '../preconditions';
-import { MemoryRouter, Route, Routes, useParams } from 'react-router';
+import { Route, Routes, useParams } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
 export type SceneType = ({
@@ -13,12 +13,12 @@ export type ContainerProps = Readonly<{
   api: GameApi,
   children: ReactNode
 }>;
-export type ContainerType = (props: ContainerProps) => ReactElement;
+export type ContainerComponent = (props: ContainerProps) => ReactElement;
 
 type Props = {
   scenes: Record<string, SceneType>,
   initialScene: string,
-  container?: ContainerType
+  container?: ContainerComponent
 };
 
 export const Engine = ({ scenes, initialScene, container }: Props) => {

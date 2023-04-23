@@ -4,9 +4,7 @@ import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
 
-type Props = Readonly<{}>;
-
-export const RoadToTheSouth = ({}: Props) => {
+export const RoadToTheSouth = () => {
   const api = useContext(ApiContext);
 
   return (

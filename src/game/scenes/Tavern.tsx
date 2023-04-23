@@ -2,9 +2,7 @@ import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
 
-type Props = Readonly<{}>;
-
-export const Tavern = ({}: Props) => {
+export const Tavern = () => {
   return (
     <Scene title="Tavern">
       <p>

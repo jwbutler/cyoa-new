@@ -2,18 +2,16 @@ import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
-import { type JSX } from 'preact';
+import { ComponentChild } from 'preact';
 import { Links } from '../../engine/components/Links';
-
-type Props = Readonly<{}>;
 
 const questName = 'farmer_kobolds';
 
-export const TavernFarmer = ({}: Props) => {
+export const TavernFarmer = () => {
   const api = useContext(ApiContext);
   const hasAcceptedQuest = (): boolean => api.player.quests.includes(questName);
 
-  let content: JSX.Element;
+  let content: ComponentChild;
   if (hasAcceptedQuest()) {
     content = (
       <p>

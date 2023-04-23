@@ -4,14 +4,12 @@ import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { Links } from '../../engine/components/Links';
 
-type Props = Readonly<{}>;
-
 type SpellListing = Readonly<{
   name: string,
   cost: number
 }>;
 
-export const SpellShop = ({}: Props) => {
+export const SpellShop = () => {
   const api = useContext(ApiContext);
   const { buySpell, player } = api;
 

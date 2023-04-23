@@ -1,6 +1,6 @@
-import './Scene.css';
+import styles from './Scene.module.css';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { ComponentChildren, JSX } from 'preact';
+import { ComponentChildren } from 'preact';
 import { useContext } from 'preact/compat';
 
 type Props = Readonly<{
@@ -12,11 +12,15 @@ export const Scene = ({ title, children }: Props) => {
   const api = useContext(ApiContext);
 
   return (
-    <div className="scene">
-      <div className="title">
+    <div className={styles.scene}>
+      <div className={styles.title}>
         {title}
       </div>
-      {api.message && (<div className="message">{api.message}</div>)}
+      {api.message && (
+        <div className={styles.message}>
+          {api.message}
+        </div>
+      )}
       {children}
     </div>
   );

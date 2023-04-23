@@ -2,16 +2,16 @@ import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
 
-type Props = Readonly<{}>;
-
-export const Dungeon = ({}: Props) => {
+export const InsideTemple = () => {
   return (
-    <Scene title="Dungeon">
+    <Scene title="Temple">
       <p>
-        <i>(Nothing to do here.  Maybe there will be a real grid here, maybe not...)</i>
+        <i>(first dungeon level, earth priest, etc.)</i>
       </p>
       <Links>
-        <Link to="town">To Town</Link>
+        <Link to="outside_temple">
+          Exit
+        </Link>
       </Links>
     </Scene>
   );

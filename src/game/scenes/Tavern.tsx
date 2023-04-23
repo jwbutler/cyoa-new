@@ -1,5 +1,6 @@
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
+import { Links } from '../../engine/components/Links';
 
 type Props = Readonly<{}>;
 
@@ -11,23 +12,17 @@ export const Tavern = ({}: Props) => {
         but there are a few patrons in the back of the room.
       </p>
 
-      <ul>
-        <li>
-          <Link to="tavern_bartender">
-            Talk to the bartender
-          </Link>
-        </li>
-        <li>
-          <Link to="tavern_farmer">
-            Talk to the farmer in the corner
-          </Link>
-        </li>
-        <li>
-          <Link to="town">
-            Back to Town
-          </Link>
-        </li>
-      </ul>
+      <Links>
+        <Link to="tavern_bartender">
+          Talk to the bartender
+        </Link>
+        <Link to="tavern_farmer">
+          Talk to the farmer in the corner
+        </Link>
+        <Link to="town">
+          Back to Town
+        </Link>
+      </Links>
     </Scene>
   );
 };

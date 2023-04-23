@@ -5,7 +5,7 @@ import { useContext } from 'preact/compat';
 
 type Props = Readonly<{
   title: string,
-  children: ComponentChildren
+  children?: ComponentChildren
 }>;
 
 export const Scene = ({ title, children }: Props) => {

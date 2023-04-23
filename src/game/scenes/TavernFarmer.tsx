@@ -3,6 +3,7 @@ import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { type JSX } from 'preact';
+import { Links } from '../../engine/components/Links';
 
 type Props = Readonly<{}>;
 
@@ -43,13 +44,13 @@ export const TavernFarmer = ({}: Props) => {
         <p>
           Good luck!"
         </p>
-        <p>
+        <Links>
           <Link
             onClick={() => api.acceptQuest(questName)}
           >
             Accept Quest
           </Link>
-        </p>
+        </Links>
       </>
     );
   }
@@ -58,9 +59,11 @@ export const TavernFarmer = ({}: Props) => {
     <Scene title="Tavern">
       {content}
 
-      <Link to="tavern">
-        Back
-      </Link>
+      <Links>
+        <Link to="tavern">
+          Back
+        </Link>
+      </Links>
     </Scene>
   );
 };

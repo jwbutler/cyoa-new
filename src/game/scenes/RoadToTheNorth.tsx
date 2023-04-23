@@ -6,19 +6,20 @@ import { Links } from '../../engine/components/Links';
 
 type Props = Readonly<{}>;
 
-export const RoadToTheSouth = ({}: Props) => {
+export const RoadToTheNorth = ({}: Props) => {
   const api = useContext(ApiContext);
 
   return (
-    <Scene title="Road to the South">
+    <Scene title="Road to the North">
       <p>
-        The Road to the South is impassible.
-        Absolutely impossible to pass. Impassible.
+        To the north, you see the ancient earth temple.
+      </p>
+      <p>
+        To the south, you can see the town.
       </p>
       <Links>
-        <Link onClick={() => api.gameOver()}>
-          GAME OVER
-        </Link>
+        <Link to="outside_temple">Approach the temple</Link>
+        <Link to="outside_town">Head back to town</Link>
       </Links>
     </Scene>
   );

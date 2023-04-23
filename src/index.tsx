@@ -14,6 +14,8 @@ import { RoadToTheNorth } from './game/scenes/RoadToTheNorth';
 import { OutsideTown } from './game/scenes/OutsideTown';
 import { OutsideTemple } from './game/scenes/OutsideTemple';
 import { InsideTemple } from './game/scenes/InsideTemple';
+import { TempleCatacombs } from './game/scenes/TempleCatacombs';
+import { InnerSanctum } from './game/scenes/InnerSanctum';
 
 type SceneName =
   | 'blacksmith'
@@ -27,6 +29,8 @@ type SceneName =
   | 'tavern'
   | 'tavern_bartender'
   | 'tavern_farmer'
+  | 'temple_catacombs'
+  | 'temple_inner_sanctum'
   | 'town'
   ;
 
@@ -42,6 +46,8 @@ const scenes: Record<SceneName, ComponentChild> = {
   'tavern': Tavern,
   'tavern_bartender': TavernBartender,
   'tavern_farmer': TavernFarmer,
+  'temple_catacombs': TempleCatacombs,
+  'temple_inner_sanctum': InnerSanctum,
   'town': Town
 };
 
@@ -56,6 +62,11 @@ const App = () => {
         spells: [],
         quests: [],
         gold: 500
+      }}
+      variables={{
+        booleans: {
+          'catacombs_kobold': true
+        }
       }}
     />
   );

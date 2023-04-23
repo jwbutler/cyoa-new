@@ -18,6 +18,8 @@ export type GameApi = {
   buySpell: (spellName: string, cost: number) => void,
   acceptQuest: (questName: string) => void,
   gameOver: () => void
+  getBoolean: (name: string) => boolean;
+  setBoolean: (name: string, value: boolean) => void;
 };
 
 type Props = Readonly<{
@@ -26,6 +28,9 @@ type Props = Readonly<{
     spells: string[],
     quests: string[],
     gold: number,
+  },
+  variables?: {
+    booleans?: Record<string, boolean>
   },
   scene: string
 }>;
@@ -36,6 +41,7 @@ export const useApi = (props: Props): GameApi => {
   const [player, setPlayer] = useState<Player>(initialPlayer);
   const [scene, setScene] = useState<string>(props.scene);
   const [message, setMessage] = useState<string | null>(null);
+  const [booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
 
   const buyItem = (itemName: string, cost: number) => {
     checkArgument(cost <= player.gold);
@@ -78,6 +84,14 @@ export const useApi = (props: Props): GameApi => {
     setMessage(null);
   };
 
+  const getBoolean = (name: string) => booleans[name];
+  const setBoolean = (name: string, value: boolean) => {
+    setBooleans(booleans => ({
+      ...booleans,
+      [name]: value
+    }));
+  };
+
   return {
     scene,
     moveTo,
@@ -87,6 +101,8 @@ export const useApi = (props: Props): GameApi => {
     buyItem,
     buySpell,
     acceptQuest,
-    gameOver: handleGameOver
+    gameOver: handleGameOver,
+    getBoolean,
+    setBoolean
   };
 };

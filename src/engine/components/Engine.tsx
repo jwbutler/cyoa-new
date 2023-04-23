@@ -17,12 +17,22 @@ type Props = Readonly<{
     quests: string[],
     gold: number,
   },
+  variables?: {
+    booleans?: Record<string, boolean>
+  },
   Container?: ContainerComponent
 }>;
 
-export const Engine = ({ scenes, initialScene, player, Container }: Props) => {
+export const Engine = ({
+  scenes,
+  initialScene,
+  player,
+  variables,
+  Container
+}: Props) => {
   const api = useApi({
     player,
+    variables,
     scene: initialScene
   });
 

@@ -3,6 +3,8 @@ import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { Links } from '../../engine/components/Links';
+import shop_png from '../images/shop.png';
+import shopkeeper_png from '../images/shopkeeper_shaded.png';
 
 type ItemListing = Readonly<{
   name: string,
@@ -45,6 +47,10 @@ export const Blacksmith = () => {
 
   return (
     <Scene title="Blacksmith">
+      <div style={{ position: 'relative' }}>
+        <img src={shop_png} alt="" />
+        <img src={shopkeeper_png} style={{ position: 'absolute', left: 0, top: 0 }} alt="" />
+      </div>
       <p>"What do you want?" the blacksmith says roughly.</p>
       <ul>
         {items.map(item => (

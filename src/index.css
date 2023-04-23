@@ -1,11 +1,6 @@
 :root {
-  /*--color-text: hsl(225, 60%, 80%);
-  --color-background: hsl(270, 45%, 15%);
-  --color-link-active: hsl(240, 90%, 70%);*/
   --color-text: #d85;
   --color-background: #422;
-  --color-link: var(--color-text);
-  --color-link-active: var(--color-text);
 }
 
 body {

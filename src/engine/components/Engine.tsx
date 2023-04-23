@@ -27,15 +27,14 @@ export const Engine = ({ scenes, initialScene, player, Container }: Props) => {
   });
 
   const Scene = checkNotNull(scenes[api.scene]);
-  const content = <Scene api={api} />;
+  const scene = <Scene />;
+  const content = (Container)
+    ? <Container>{scene}</Container>
+    : scene;
 
   return (
     <ApiContext.Provider value={api}>
-      {
-        (Container)
-          ? <Container>{content}</Container>
-          : content
-      }
+      {content}
     </ApiContext.Provider>
   );
 };

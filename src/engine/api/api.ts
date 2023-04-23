@@ -10,13 +10,14 @@ export type Player = Readonly<{
 
 export type GameApi = {
   scene: string,
-  setScene: (scene: string) => void,
+  moveTo: (scene: string) => void,
   player: Player,
   message: string | null,
   setMessage: (message: string | null) => void,
   buyItem: (itemName: string, cost: number) => void,
   buySpell: (spellName: string, cost: number) => void,
-  acceptQuest: (questName: string) => void
+  acceptQuest: (questName: string) => void,
+  gameOver: () => void
 };
 
 type Props = Readonly<{
@@ -65,17 +66,27 @@ export const useApi = (props: Props): GameApi => {
     setMessage(`Accepted quest: ${questName}`);
   };
 
+  const moveTo = (sceneName: string) => {
+    setScene(sceneName);
+    setMessage(null);
+  };
+
+  const handleGameOver = () => {
+    alert('Game over!');
+    setPlayer(initialPlayer);
+    setScene(props.scene);
+    setMessage(null);
+  };
+
   return {
     scene,
-    setScene: (sceneName: string | null) => {
-      setScene(sceneName);
-      setMessage(null);
-    },
+    moveTo,
     player: player!,
     message,
     setMessage,
     buyItem,
     buySpell,
-    acceptQuest
+    acceptQuest,
+    gameOver: handleGameOver
   };
 };

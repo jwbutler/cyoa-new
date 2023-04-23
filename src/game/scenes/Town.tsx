@@ -25,11 +25,14 @@ export const Town = ({}: Props) => {
             Go to the Tavern
           </Link>
         </li>
-      </ul>
-      <ul>
         <li>
           <Link to="dungeon">
             Enter the Dungeon!
+          </Link>
+        </li>
+        <li>
+          <Link to="road_to_the_south">
+            Take the Road to the South
           </Link>
         </li>
       </ul>

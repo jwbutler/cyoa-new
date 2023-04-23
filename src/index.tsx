@@ -9,10 +9,12 @@ import { TavernFarmer } from './game/scenes/TavernFarmer';
 import { Container } from './game/components/Container';
 import { Dungeon } from './game/scenes/Dungeon';
 import { type ComponentChild, render } from 'preact';
+import { RoadToTheSouth } from './game/scenes/RoadToTheSouth';
 
 type SceneName =
   | 'blacksmith'
   | 'dungeon'
+  | 'road_to_the_south'
   | 'spell_shop'
   | 'tavern'
   | 'tavern_bartender'
@@ -23,6 +25,7 @@ type SceneName =
 const scenes: Record<SceneName, ComponentChild> = {
   'blacksmith': Blacksmith,
   'dungeon': Dungeon,
+  'road_to_the_south': RoadToTheSouth,
   'spell_shop': SpellShop,
   'tavern': Tavern,
   'tavern_bartender': TavernBartender,

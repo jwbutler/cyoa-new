@@ -18,7 +18,7 @@ export const Link = ({ to, onClick, children }: Props) => {
       onClick={e => {
         onClick?.();
         if (to) {
-          api.setScene(to);
+          api.moveTo(to);
         }
         e.preventDefault();
       }}

@@ -1,3 +1,4 @@
+import { Image } from '../components/Image';
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
@@ -48,8 +49,8 @@ export const Blacksmith = () => {
   return (
     <Scene title="Blacksmith">
       <div style={{ position: 'relative' }}>
-        <img src={shop_png} alt="" />
-        <img src={shopkeeper_png} style={{ position: 'absolute', left: 0, top: 0 }} alt="" />
+        <Image src={shop_png} />
+        <Image src={shopkeeper_png} style={{ position: 'absolute', left: 0, top: 0 }} />
       </div>
       <p>"What do you want?" the blacksmith says roughly.</p>
       <ul>

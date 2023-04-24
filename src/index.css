@@ -1,6 +1,7 @@
 :root {
-  --color-text: #d85;
-  --color-background: #422;
+  --color-text: white;
+  --color-background: black;
+  --color-background-highlight: navy;
 }
 
 body {

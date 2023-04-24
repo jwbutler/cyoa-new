@@ -1,3 +1,4 @@
+import { Image } from '../components/Image';
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
@@ -5,7 +6,7 @@ import road_to_temple_png from '../images/road_to_temple.png';
 
 export const RoadToTheNorth = () => (
   <Scene title="Road to the North">
-    <img src={road_to_temple_png} alt="" />
+    <Image src={road_to_temple_png} />
     <p>
       To the north, you see the ancient earth temple.
     </p>

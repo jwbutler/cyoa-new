@@ -1,3 +1,4 @@
+import { Image } from '../components/Image';
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
@@ -5,7 +6,7 @@ import temple_exterior from '../images/temple_exterior.png';
 
 export const OutsideTemple = () => (
   <Scene title="Outside Temple">
-    <img src={temple_exterior} alt="" />
+    <Image src={temple_exterior} />
     <p>
       You're standing outside a massive stone temple.
       This was a major Earth Cult temple for the last several centuries,

@@ -1,3 +1,4 @@
+import { Image } from '../components/Image';
 import { Scene } from '../components/Scene';
 import { Link } from '../../engine/components/Link';
 import { Links } from '../../engine/components/Links';
@@ -13,7 +14,7 @@ export const Town = () => {
   }
   return (
     <Scene title="Town">
-      <img src={town_png} alt="" />
+      <Image src={town_png} />
       <p>You're in the middle of a small town with dirt roads.</p>
       <p>There are a few shops here, as well as a tavern.</p>
 

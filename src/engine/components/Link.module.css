@@ -5,8 +5,8 @@
   text-decoration: none;
   cursor: pointer;
   border: 2px solid var(--color-text);
-  padding: 1em;
-  margin: 0.5em 0;
+  padding: 0.5em;
+  margin: 0.25em 0;
   display: inline-block;
 }
 

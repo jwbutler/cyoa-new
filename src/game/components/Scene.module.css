@@ -10,6 +10,6 @@
   font-size: 1.0em;
   font-weight: bold;
   font-family: sans-serif;
-  background-color: #def;
+  background-color: var(--color-background-highlight);
   padding: 10px;
 }

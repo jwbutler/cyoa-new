@@ -1,9 +1,9 @@
-import { Scene } from '../components/Scene';
-import { Link } from '../../engine/components/Link';
+import { Scene } from '../../ui/components/Scene';
+import { Link } from '../../ui/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { ComponentChild } from 'preact';
-import { Links } from '../../engine/components/Links';
+import { Links } from '../../ui/components/Links';
 
 const questName = 'farmer_kobolds';
 

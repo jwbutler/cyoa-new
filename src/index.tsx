@@ -6,7 +6,7 @@ import { SpellShop } from './game/scenes/SpellShop';
 import { Tavern } from './game/scenes/Tavern';
 import { TavernBartender } from './game/scenes/TavernBartender';
 import { TavernFarmer } from './game/scenes/TavernFarmer';
-import { Container } from './game/components/Container';
+import { Container } from './ui/components/Container';
 import { Dungeon } from './game/scenes/Dungeon';
 import { type ComponentChild, render } from 'preact';
 import { RoadToTheSouth } from './game/scenes/RoadToTheSouth';

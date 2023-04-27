@@ -1,6 +1,6 @@
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
-import { ComponentChildren } from 'preact';
+import type { ComponentChildren } from 'preact';
 
 type Props = Readonly<{
   children: ComponentChildren

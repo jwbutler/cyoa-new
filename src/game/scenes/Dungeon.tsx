@@ -1,6 +1,6 @@
-import { Scene } from '../components/Scene';
-import { Link } from '../../engine/components/Link';
-import { Links } from '../../engine/components/Links';
+import { Scene } from '../../ui/components/Scene';
+import { Link } from '../../ui/components/Link';
+import { Links } from '../../ui/components/Links';
 
 export const Dungeon = () => (
   <Scene title="Dungeon">

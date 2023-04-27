@@ -1,5 +1,5 @@
 import styles from './Link.module.css';
-import { ApiContext } from '../api/ApiContext';
+import { ApiContext } from '../../engine/api/ApiContext';
 import type { ComponentChildren } from 'preact';
 import { useContext } from 'preact/compat';
 
@@ -14,7 +14,7 @@ export const Link = ({ to, onClick, children }: Props) => {
   return (
     <a
       className={styles.link}
-      href="#"
+      href="src/engine/components#"
       onClick={e => {
         onClick?.();
         if (to) {

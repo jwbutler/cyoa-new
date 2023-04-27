@@ -1,6 +1,6 @@
 import styles from './Scene.module.css';
 import { ApiContext } from '../../engine/api/ApiContext';
-import { ComponentChildren } from 'preact';
+import type { ComponentChildren } from 'preact';
 import { useContext } from 'preact/compat';
 
 type Props = Readonly<{

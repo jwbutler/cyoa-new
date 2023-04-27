@@ -1,8 +1,12 @@
-import { Scene } from '../components/Scene';
-import { Link } from '../../engine/components/Link';
+import { Scene } from '../../ui/components/Scene';
+import { Link } from '../../ui/components/Link';
 import { ApiContext } from '../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
-import { Links } from '../../engine/components/Links';
+import { Links } from '../../ui/components/Links';
+import { Column, Columns } from '../../ui/components/Columns';
+import { Image } from '../../ui/components/Image';
+import shop_png from '../images/shop.png';
+import shopkeeper_png from '../images/shopkeeper_shaded.png';
 
 type SpellListing = Readonly<{
   name: string,
@@ -45,19 +49,38 @@ export const SpellShop = () => {
 
   return (
     <Scene title="Spell Shop">
-      <p>"What do you want?" the spell guy says warmly.</p>
-      <ul>
-        {spells.map(spell => (
-          !playerHasSpell(spell) && (
-            <li key={spell.name}>
-              <SpellLink spell={spell} />
-            </li>
-          )
-        ))}
-      </ul>
-      <Links>
-        <Link to="town">Back to Town</Link>
-      </Links>
+      <Columns>
+        <Column>
+          <div style={{ position: 'relative' }}>
+            <Image src={shop_png} style={{
+              filter: 'hue-rotate(180deg)',
+              transform: 'scaleX(-1)'
+            }} />
+            <Image src={shopkeeper_png} style={{
+              position: 'absolute',
+              filter: 'hue-rotate(180deg)',
+              transform: 'scaleX(-1)',
+              left: 0,
+              top: 0
+            }} />
+          </div>
+        </Column>
+        <Column>
+          <p>"What do you want?" the spell guy says warmly.</p>
+          <ul>
+            {spells.map(spell => (
+              !playerHasSpell(spell) && (
+                <li key={spell.name}>
+                  <SpellLink spell={spell} />
+                </li>
+              )
+            ))}
+          </ul>
+          <Links>
+            <Link to="town">Back to Town</Link>
+          </Links>
+        </Column>
+      </Columns>
     </Scene>
   );
 };

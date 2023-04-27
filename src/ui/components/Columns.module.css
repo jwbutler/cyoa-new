@@ -1,0 +1,8 @@
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  padding: 1em;
+}

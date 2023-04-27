@@ -1,8 +1,8 @@
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { Links } from '../../ui/components/Links';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { Links } from '../../../ui/components/Links';
 import { useContext } from 'preact/compat';
-import { ApiContext } from '../../engine/api/ApiContext';
+import { ApiContext } from '../../../engine/api/ApiContext';
 
 export const TempleCatacombs = () => {
   const api = useContext(ApiContext);

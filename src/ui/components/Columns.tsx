@@ -12,7 +12,7 @@ export const Columns = ({ children }: Props) => (
 );
 
 type ColumnProps = Readonly<{
-  children: ComponentChildren
+  children?: ComponentChildren
 }>;
 
 export const Column = ({ children }: ColumnProps) => (

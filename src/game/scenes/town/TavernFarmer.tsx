@@ -1,9 +1,12 @@
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { ApiContext } from '../../engine/api/ApiContext';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { ComponentChild } from 'preact';
-import { Links } from '../../ui/components/Links';
+import { Links } from '../../../ui/components/Links';
+import { Column, Columns } from '../../../ui/components/Columns';
+import { Image } from '../../../ui/components/Image';
+import tavern_with_farmer_png from '../../images/tavern_with_farmer.png';
 
 const questName = 'farmer_kobolds';
 
@@ -55,13 +58,19 @@ export const TavernFarmer = () => {
 
   return (
     <Scene title="Tavern">
-      {content}
-
-      <Links>
-        <Link to="tavern">
-          Back
-        </Link>
-      </Links>
+      <Columns>
+        <Column>
+          <Image src={tavern_with_farmer_png} />
+        </Column>
+        <Column>
+          {content}
+          <Links>
+            <Link to="tavern">
+              Back
+            </Link>
+          </Links>
+        </Column>
+      </Columns>
     </Scene>
   );
 };

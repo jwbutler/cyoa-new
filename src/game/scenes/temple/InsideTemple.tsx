@@ -1,6 +1,6 @@
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { Links } from '../../ui/components/Links';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { Links } from '../../../ui/components/Links';
 
 export const InsideTemple = () => (
   <Scene title="Inside the Temple">

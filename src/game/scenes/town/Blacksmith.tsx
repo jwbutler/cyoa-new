@@ -1,12 +1,12 @@
-import { Image } from '../../ui/components/Image';
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { ApiContext } from '../../engine/api/ApiContext';
+import { Image } from '../../../ui/components/Image';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
-import { Links } from '../../ui/components/Links';
-import shop_png from '../images/shop.png';
-import shopkeeper_png from '../images/shopkeeper_shaded.png';
-import { Column, Columns } from '../../ui/components/Columns';
+import { Links } from '../../../ui/components/Links';
+import shop_png from '../../images/shop.png';
+import shopkeeper_png from '../../images/shopkeeper_shaded.png';
+import { Column, Columns } from '../../../ui/components/Columns';
 
 type ItemListing = Readonly<{
   name: string,

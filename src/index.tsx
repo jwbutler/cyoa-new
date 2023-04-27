@@ -1,25 +1,23 @@
-import { Town } from './game/scenes/Town';
-import { Blacksmith } from './game/scenes/Blacksmith';
+import { Town } from './game/scenes/town/Town';
+import { Blacksmith } from './game/scenes/town/Blacksmith';
 import './index.css';
 import { Engine } from './engine/components/Engine';
-import { SpellShop } from './game/scenes/SpellShop';
-import { Tavern } from './game/scenes/Tavern';
-import { TavernBartender } from './game/scenes/TavernBartender';
-import { TavernFarmer } from './game/scenes/TavernFarmer';
+import { SpellShop } from './game/scenes/town/SpellShop';
+import { Tavern } from './game/scenes/town/Tavern';
+import { TavernBartender } from './game/scenes/town/TavernBartender';
+import { TavernFarmer } from './game/scenes/town/TavernFarmer';
 import { Container } from './ui/components/Container';
-import { Dungeon } from './game/scenes/Dungeon';
 import { type ComponentChild, render } from 'preact';
 import { RoadToTheSouth } from './game/scenes/RoadToTheSouth';
 import { RoadToTheNorth } from './game/scenes/RoadToTheNorth';
 import { OutsideTown } from './game/scenes/OutsideTown';
-import { OutsideTemple } from './game/scenes/OutsideTemple';
-import { InsideTemple } from './game/scenes/InsideTemple';
-import { TempleCatacombs } from './game/scenes/TempleCatacombs';
-import { InnerSanctum } from './game/scenes/InnerSanctum';
+import { OutsideTemple } from './game/scenes/temple/OutsideTemple';
+import { InsideTemple } from './game/scenes/temple/InsideTemple';
+import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
+import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
 
 type SceneName =
   | 'blacksmith'
-  | 'dungeon'
   | 'inside_temple'
   | 'outside_temple'
   | 'outside_town'
@@ -36,7 +34,6 @@ type SceneName =
 
 const scenes: Record<SceneName, ComponentChild> = {
   'blacksmith': Blacksmith,
-  'dungeon': Dungeon,
   'inside_temple': InsideTemple,
   'outside_temple': OutsideTemple,
   'outside_town': OutsideTown,

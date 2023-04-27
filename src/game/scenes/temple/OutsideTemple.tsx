@@ -1,9 +1,9 @@
-import { Image } from '../../ui/components/Image';
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { Links } from '../../ui/components/Links';
-import temple_exterior from '../images/temple_exterior.png';
-import { Column, Columns } from '../../ui/components/Columns';
+import { Image } from '../../../ui/components/Image';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { Links } from '../../../ui/components/Links';
+import temple_exterior from '../../images/temple_exterior.png';
+import { Column, Columns } from '../../../ui/components/Columns';
 
 export const OutsideTemple = () => (
   <Scene title="Outside Temple">

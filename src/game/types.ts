@@ -11,6 +11,7 @@ export enum SceneName {
   TAVERN_FARMER = 'tavern_farmer',
   TEMPLE_CATACOMBS = 'temple_catacombs',
   TEMPLE_INNER_SANCTUM = 'temple_inner_sanctum',
+  TITLE = 'title',
   TOWN = 'town'
 }
 

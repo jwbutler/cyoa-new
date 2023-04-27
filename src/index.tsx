@@ -16,6 +16,7 @@ import { InsideTemple } from './game/scenes/temple/InsideTemple';
 import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
 import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
 import { SceneName } from './game/types';
+import { TitleScreen } from './game/components/TitleScreen';
 
 const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.ARMORER]: Armorer,
@@ -25,6 +26,7 @@ const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
   [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
   [SceneName.SPELL_SHOP]: SpellShop,
+  [SceneName.TITLE]: TitleScreen,
   [SceneName.TAVERN]: Tavern,
   [SceneName.TAVERN_BARTENDER]: TavernBartender,
   [SceneName.TAVERN_FARMER]: TavernFarmer,
@@ -37,7 +39,7 @@ const App = () => {
   return (
     <Engine
       scenes={scenes}
-      initialScene="town"
+      initialScene={SceneName.TITLE}
       Container={Container}
       player={{
         inventory: [],

@@ -2,6 +2,7 @@ import { useApi } from '../api/api';
 import { checkNotNull } from '../../preconditions';
 import { ApiContext } from '../api/ApiContext';
 import type { ComponentChildren, ComponentChild } from 'preact';
+import { SceneName } from '../../game/types';
 
 export type ContainerProps = Readonly<{
   children: ComponentChildren
@@ -38,7 +39,8 @@ export const Engine = ({
 
   const Scene = checkNotNull(scenes[api.scene]);
   const scene = <Scene />;
-  const content = (Container)
+  const showFooter = api.scene !== SceneName.TITLE; // hack hack hack
+  const content = (showFooter && !!Container)
     ? <Container>{scene}</Container>
     : scene;
 

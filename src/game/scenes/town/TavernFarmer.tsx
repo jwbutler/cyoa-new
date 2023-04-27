@@ -4,10 +4,11 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import { ComponentChild } from 'preact';
 import { Links } from '../../../ui/components/Links';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import tavern_with_farmer_png from '../../images/tavern_with_farmer.png';
 import { QuestName, SceneName } from '../../types';
+import { Column } from '../../../ui/components/Column';
 
 export const TavernFarmer = () => {
   const api = useContext(ApiContext);

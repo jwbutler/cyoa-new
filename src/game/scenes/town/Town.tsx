@@ -6,8 +6,9 @@ import { Links } from '../../../ui/components/Links';
 import town_png from '../../images/town.png';
 import { useContext } from 'preact/compat';
 import { ApiContext } from '../../../engine/api/ApiContext';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
 import { QuestName, SceneName } from '../../types';
+import { Column } from '../../../ui/components/Column';
 
 export const Town = () => {
   const api = useContext(ApiContext);

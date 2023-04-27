@@ -3,10 +3,11 @@ import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { Links } from '../../../ui/components/Links';
 import { ApiContext } from '../../../engine/api/ApiContext';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Column } from '../../../ui/components/Column';
+import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
-import earth_priest_png from '../../images/earth_priest_shaded.png';
 import { QuestName, SceneName } from '../../types';
+import earth_priest_png from '../../images/earth_priest_shaded.png';
 
 export const InnerSanctum = () => {
   const api = useContext(ApiContext);

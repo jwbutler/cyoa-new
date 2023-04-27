@@ -3,7 +3,8 @@ import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { Links } from '../../../ui/components/Links';
 import road_to_temple_png from '../../images/road_to_temple.png';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
+import { Column } from '../../../ui/components/Column';
 
 export const RoadToTheNorth = () => (
   <Scene title="Road to the North">

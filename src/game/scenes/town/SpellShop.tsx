@@ -3,11 +3,12 @@ import { Link } from '../../../ui/components/Link';
 import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext, useState } from 'preact/compat';
 import { Links } from '../../../ui/components/Links';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
 import { SceneName } from '../../types';
+import { Column } from '../../../ui/components/Column';
 
 type SpellListing = Readonly<{
   name: string,

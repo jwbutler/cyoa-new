@@ -3,13 +3,14 @@ import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { Links } from '../../../ui/components/Links';
 import temple_exterior from '../../images/temple_exterior.png';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
+import { Column } from '../../../ui/components/Column';
 
 export const OutsideTemple = () => (
   <Scene title="Outside Temple">
     <Columns>
       <Column>
-        <Image src={temple_exterior} />
+        <Image src={temple_exterior}/>
       </Column>
       <Column>
         <p>

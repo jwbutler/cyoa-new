@@ -6,8 +6,9 @@ import { useContext, useState } from 'preact/compat';
 import { Links } from '../../../ui/components/Links';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
-import { Column, Columns } from '../../../ui/components/Columns';
+import { Columns } from '../../../ui/components/Columns';
 import { SceneName } from '../../types';
+import { Column } from '../../../ui/components/Column';
 
 type ItemListing = Readonly<{
   name: string,

@@ -10,13 +10,3 @@ export const Columns = ({ children }: Props) => (
     {children}
   </div>
 );
-
-type ColumnProps = Readonly<{
-  children?: ComponentChildren
-}>;
-
-export const Column = ({ children }: ColumnProps) => (
-  <div className={styles.column}>
-    {children}
-  </div>
-);

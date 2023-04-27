@@ -25,8 +25,8 @@ export const Town = () => {
           <p>There are a few shops here, as well as a tavern.</p>
 
           <Links>
-            <Link to={SceneName.BLACKSMITH}>
-              Go to the Blacksmith
+            <Link to={SceneName.ARMORER}>
+              Go to the Armorer
             </Link>
             <Link to={SceneName.SPELL_SHOP}>
               Go to the Spell Shop

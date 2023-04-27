@@ -1,5 +1,5 @@
 import { Town } from './game/scenes/town/Town';
-import { Blacksmith } from './game/scenes/town/Blacksmith';
+import { Armorer } from './game/scenes/town/Armorer';
 import './index.css';
 import { Engine } from './engine/components/Engine';
 import { SpellShop } from './game/scenes/town/SpellShop';
@@ -18,7 +18,7 @@ import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
 import { SceneName } from './game/types';
 
 const scenes: Record<SceneName, ComponentChild> = {
-  [SceneName.BLACKSMITH]: Blacksmith,
+  [SceneName.ARMORER]: Armorer,
   [SceneName.INSIDE_TEMPLE]: InsideTemple,
   [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
   [SceneName.OUTSIDE_TOWN]: OutsideTown,

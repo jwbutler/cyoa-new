@@ -1,37 +1,37 @@
+import { Image } from '../../../ui/components/Image';
 import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext, useState } from 'preact/compat';
 import { Links } from '../../../ui/components/Links';
-import { Column, Columns } from '../../../ui/components/Columns';
-import { Image } from '../../../ui/components/Image';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
+import { Column, Columns } from '../../../ui/components/Columns';
 import { SceneName } from '../../types';
 
-type SpellListing = Readonly<{
+type ItemListing = Readonly<{
   name: string,
   cost: number
 }>;
 
 type DialogOption =
   | 'none'
-  | 'spells'
+  | 'items'
   | 'news'
   | 'quest'
-  ;
+;
 
-export const SpellShop = () => {
+export const Armorer = () => {
   const api = useContext(ApiContext);
   const { player } = api;
 
-  const spells: SpellListing[] = [
-    { name: 'Fireball', cost: 100 },
-    { name: 'Minor Heal', cost: 200 }
+  const items: ItemListing[] = [
+    { name: 'Noob Sword', cost: 150 },
+    { name: 'Awesome Sword', cost: 1000 }
   ];
 
-  const playerHasSpell = (spell: SpellListing) => {
-    return player.spells.includes(spell.name);
+  const playerHasItem = (item: ItemListing) => {
+    return player.inventory.includes(item.name);
   };
 
   const [selectedDialogOption, setSelectedDialogOption] = useState<DialogOption>('none');
@@ -41,12 +41,12 @@ export const SpellShop = () => {
         return (
           <>
             <p>
-              "What do you want?" the shopkeeper says warmly.
+              "What do you want?" the armorer says roughly.
             </p>
             <ul>
               <li>
-                <Link onClick={() => setSelectedDialogOption('spells')}>
-                  Buy spells
+                <Link onClick={() => setSelectedDialogOption('items')}>
+                  Buy items
                 </Link>
               </li>
               <li>
@@ -64,14 +64,14 @@ export const SpellShop = () => {
             </ul>
           </>
         );
-      case 'spells':
+      case 'items':
         return (
           <>
             <ul>
-              {spells.map(spell => (
-                !playerHasSpell(spell) && (
-                  <li key={spell.name}>
-                    <SpellLink spell={spell} />
+              {items.map(item => (
+                !playerHasItem(item) && (
+                  <li key={item.name}>
+                    <ItemLink item={item} />
                   </li>
                 )
               ))}
@@ -86,8 +86,8 @@ export const SpellShop = () => {
         return (
           <>
             <p>
-              "Business? To be honest it's a rough year. Folks around here don't have much to spend.
-              But the new Temple still takes the same in taxes. They'll be coming around soon."
+              "As you can see, I haven't got much in stock. Folks have been buying more than usual.
+              Everyone feels they need to protect themselves these days."
             </p>
 
             <Link onClick={() => setSelectedDialogOption('none')}>
@@ -99,8 +99,8 @@ export const SpellShop = () => {
         return (
           <>
             <p>
-              "My mother told me that when she was young, they used to go to the old temple for medicine.
-              The priests could cure most anything, but they never shared their secrets."
+              "You better be careful around the old temple. It's not safe. Of course, when I was your age,
+              the foul things used to fear the old temple. Now it seems that's where they all gather."
             </p>
 
             <Link onClick={() => setSelectedDialogOption('none')}>
@@ -114,21 +114,12 @@ export const SpellShop = () => {
   };
 
   return (
-    <Scene title="Shopkeeper">
+    <Scene title="Armorer">
       <Columns>
         <Column>
           <div style={{ position: 'relative' }}>
-            <Image src={shop_png} style={{
-              filter: 'hue-rotate(180deg)',
-              transform: 'scaleX(-1)'
-            }} />
-            <Image src={shopkeeper_png} style={{
-              position: 'absolute',
-              filter: 'hue-rotate(180deg)',
-              transform: 'scaleX(-1)',
-              left: 0,
-              top: 0
-            }} />
+            <Image src={shop_png} />
+            <Image src={shopkeeper_png} style={{ position: 'absolute', left: 0, top: 0 }} />
           </div>
         </Column>
         <Column>
@@ -144,19 +135,20 @@ export const SpellShop = () => {
   );
 };
 
-type SpellLinkProps = {
-  spell: SpellListing
+type ItemLinkProps = {
+  item: ItemListing
 };
 
-const SpellLink = ({ spell }: SpellLinkProps) => {
+const ItemLink = ({ item }: ItemLinkProps) => {
   const api = useContext(ApiContext);
-  const { buySpell, player } = api;
-  const { name, cost } = spell;
+  const { player } = api;
+  const { name, cost } = item;
+
   const handleClick = () => {
     if (cost > player.gold) {
       api.setMessage('Not enough gold');
     } else {
-      buySpell(name, cost);
+      api.buyItem(name, cost);
     }
   };
 

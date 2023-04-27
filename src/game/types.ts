@@ -1,5 +1,5 @@
 export enum SceneName {
-  BLACKSMITH = 'blacksmith',
+  ARMORER = 'armorer',
   INSIDE_TEMPLE = 'inside_temple',
   OUTSIDE_TEMPLE = 'outside_temple',
   OUTSIDE_TOWN = 'outside_town',

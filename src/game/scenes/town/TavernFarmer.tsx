@@ -7,12 +7,11 @@ import { Links } from '../../../ui/components/Links';
 import { Column, Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import tavern_with_farmer_png from '../../images/tavern_with_farmer.png';
-
-const questName = 'farmer_kobolds';
+import { QuestName, SceneName } from '../../types';
 
 export const TavernFarmer = () => {
   const api = useContext(ApiContext);
-  const hasAcceptedQuest = (): boolean => api.player.quests.includes(questName);
+  const hasAcceptedQuest = (): boolean => api.player.quests.includes(QuestName.FARMER_KOBOLDS);
 
   let content: ComponentChild;
   if (hasAcceptedQuest()) {
@@ -47,7 +46,7 @@ export const TavernFarmer = () => {
         </p>
         <Links>
           <Link
-            onClick={() => api.acceptQuest(questName)}
+            onClick={() => api.acceptQuest(QuestName.FARMER_KOBOLDS)}
           >
             Accept Quest
           </Link>
@@ -65,7 +64,7 @@ export const TavernFarmer = () => {
         <Column>
           {content}
           <Links>
-            <Link to="tavern">
+            <Link to={SceneName.TAVERN}>
               Back
             </Link>
           </Links>

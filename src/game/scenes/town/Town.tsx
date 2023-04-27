@@ -7,10 +7,11 @@ import town_png from '../../images/town.png';
 import { useContext } from 'preact/compat';
 import { ApiContext } from '../../../engine/api/ApiContext';
 import { Column, Columns } from '../../../ui/components/Columns';
+import { QuestName, SceneName } from '../../types';
 
 export const Town = () => {
   const api = useContext(ApiContext);
-  if (api.player.quests.includes('earth_priest')) {
+  if (api.player.quests.includes(QuestName.EARTH_PRIEST)) {
     api.setMessage('Done with part 1');
   }
   return (
@@ -24,16 +25,16 @@ export const Town = () => {
           <p>There are a few shops here, as well as a tavern.</p>
 
           <Links>
-            <Link to="blacksmith">
+            <Link to={SceneName.BLACKSMITH}>
               Go to the Blacksmith
             </Link>
-            <Link to="spell_shop">
+            <Link to={SceneName.SPELL_SHOP}>
               Go to the Spell Shop
             </Link>
-            <Link to="tavern">
+            <Link to={SceneName.TAVERN}>
               Go to the Tavern
             </Link>
-            <Link to="outside_town">
+            <Link to={SceneName.OUTSIDE_TOWN}>
               Exit Town
             </Link>
           </Links>

@@ -8,44 +8,29 @@ import { TavernBartender } from './game/scenes/town/TavernBartender';
 import { TavernFarmer } from './game/scenes/town/TavernFarmer';
 import { Container } from './ui/components/Container';
 import { type ComponentChild, render } from 'preact';
-import { RoadToTheSouth } from './game/scenes/RoadToTheSouth';
-import { RoadToTheNorth } from './game/scenes/RoadToTheNorth';
-import { OutsideTown } from './game/scenes/OutsideTown';
+import { RoadToTheSouth } from './game/scenes/world/RoadToTheSouth';
+import { RoadToTheNorth } from './game/scenes/world/RoadToTheNorth';
+import { OutsideTown } from './game/scenes/world/OutsideTown';
 import { OutsideTemple } from './game/scenes/temple/OutsideTemple';
 import { InsideTemple } from './game/scenes/temple/InsideTemple';
 import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
 import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
-
-type SceneName =
-  | 'blacksmith'
-  | 'inside_temple'
-  | 'outside_temple'
-  | 'outside_town'
-  | 'road_to_the_north'
-  | 'road_to_the_south'
-  | 'spell_shop'
-  | 'tavern'
-  | 'tavern_bartender'
-  | 'tavern_farmer'
-  | 'temple_catacombs'
-  | 'temple_inner_sanctum'
-  | 'town'
-  ;
+import { SceneName } from './game/types';
 
 const scenes: Record<SceneName, ComponentChild> = {
-  'blacksmith': Blacksmith,
-  'inside_temple': InsideTemple,
-  'outside_temple': OutsideTemple,
-  'outside_town': OutsideTown,
-  'road_to_the_north': RoadToTheNorth,
-  'road_to_the_south': RoadToTheSouth,
-  'spell_shop': SpellShop,
-  'tavern': Tavern,
-  'tavern_bartender': TavernBartender,
-  'tavern_farmer': TavernFarmer,
-  'temple_catacombs': TempleCatacombs,
-  'temple_inner_sanctum': InnerSanctum,
-  'town': Town
+  [SceneName.BLACKSMITH]: Blacksmith,
+  [SceneName.INSIDE_TEMPLE]: InsideTemple,
+  [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
+  [SceneName.OUTSIDE_TOWN]: OutsideTown,
+  [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
+  [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
+  [SceneName.SPELL_SHOP]: SpellShop,
+  [SceneName.TAVERN]: Tavern,
+  [SceneName.TAVERN_BARTENDER]: TavernBartender,
+  [SceneName.TAVERN_FARMER]: TavernFarmer,
+  [SceneName.TEMPLE_CATACOMBS]: TempleCatacombs,
+  [SceneName.TEMPLE_INNER_SANCTUM]: InnerSanctum,
+  [SceneName.TOWN]: Town
 };
 
 const App = () => {

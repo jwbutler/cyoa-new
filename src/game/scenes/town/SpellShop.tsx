@@ -7,6 +7,7 @@ import { Column, Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
+import { SceneName } from '../../types';
 
 type SpellListing = Readonly<{
   name: string,
@@ -77,7 +78,9 @@ export const SpellShop = () => {
             ))}
           </ul>
           <Links>
-            <Link to="town">Back to Town</Link>
+            <Link to={SceneName.TOWN}>
+              Back to Town
+            </Link>
           </Links>
         </Column>
       </Columns>

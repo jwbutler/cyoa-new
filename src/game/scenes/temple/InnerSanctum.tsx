@@ -6,11 +6,13 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { Column, Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import earth_priest_png from '../../images/earth_priest_shaded.png';
+import { QuestName, SceneName } from '../../types';
 
 export const InnerSanctum = () => {
   const api = useContext(ApiContext);
   const [startedDialogue, setStartedDialogue] = useState(false);
-  const acceptedQuest = api.player.quests.includes('earth_priest');
+  const acceptedQuest = api.player.quests.includes(QuestName.EARTH_PRIEST);
+
   return (
     <Scene title="Temple Inner Sanctum">
       <Columns>
@@ -44,7 +46,7 @@ export const InnerSanctum = () => {
             <p>Please save the world!</p>
           )}
           <Links>
-            <Link to="temple_catacombs">
+            <Link to={SceneName.TEMPLE_CATACOMBS}>
               Exit
             </Link>
           </Links>

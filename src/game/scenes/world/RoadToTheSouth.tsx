@@ -1,8 +1,8 @@
 import { useContext } from 'preact/compat';
-import { ApiContext } from '../../engine/api/ApiContext';
-import { Scene } from '../../ui/components/Scene';
-import { Link } from '../../ui/components/Link';
-import { Links } from '../../ui/components/Links';
+import { ApiContext } from '../../../engine/api/ApiContext';
+import { Scene } from '../../../ui/components/Scene';
+import { Link } from '../../../ui/components/Link';
+import { Links } from '../../../ui/components/Links';
 
 export const RoadToTheSouth = () => {
   const api = useContext(ApiContext);

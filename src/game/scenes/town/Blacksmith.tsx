@@ -7,6 +7,7 @@ import { Links } from '../../../ui/components/Links';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
 import { Column, Columns } from '../../../ui/components/Columns';
+import { SceneName } from '../../types';
 
 type ItemListing = Readonly<{
   name: string,
@@ -68,7 +69,9 @@ export const Blacksmith = () => {
             ))}
           </ul>
           <Links>
-            <Link to="town">Back to Town</Link>
+            <Link to={SceneName.TOWN}>
+              Back to Town
+            </Link>
           </Links>
         </Column>
       </Columns>

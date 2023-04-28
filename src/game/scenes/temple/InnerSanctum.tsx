@@ -9,10 +9,84 @@ import { Image } from '../../../ui/components/Image';
 import { QuestName, SceneName } from '../../types';
 import earth_priest_png from '../../images/earth_priest_shaded.png';
 
+type DialogOption =
+  | 'none'
+  | 'greeting'
+  | 'wall_of_text'
+  | 'nope'
+;
+
 export const InnerSanctum = () => {
   const api = useContext(ApiContext);
-  const [startedDialogue, setStartedDialogue] = useState(false);
+  const [dialogOption, setDialogOption] = useState<DialogOption>('none');
   const acceptedQuest = api.player.quests.includes(QuestName.EARTH_PRIEST);
+
+  const renderContent = () => {
+    if (acceptedQuest) {
+      return (<p>Please save the world!</p>);
+    }
+
+    switch (dialogOption) {
+      case 'none':
+        return (
+          <>
+            <p>
+              There's an earth priest here
+            </p>
+            <p>
+              <Link onClick={() => setDialogOption('greeting')}>
+                Talk to him
+              </Link>
+            </p>
+          </>
+        );
+      case 'greeting':
+        return (
+          <>
+            <p>
+              Who enters this holy place to seek the wisdom of the earth?
+            </p>
+            <p>
+              Are you the one who will save our world from the coming of the heavenly host?
+            </p>
+            <ul>
+              <li>
+                <Link onClick={() => setDialogOption('wall_of_text')}>
+                  "Yeah"
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => setDialogOption('wall_of_text')}>
+                  "...Maybe?"
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => setDialogOption('nope')}>
+                  "Nope"
+                </Link>
+              </li>
+            </ul>
+          </>
+        );
+      case 'nope':
+        return (
+          <p>
+            The earth priest frowns at you in disapproval.
+          </p>
+        );
+      case 'wall_of_text':
+        return (
+          <>
+            <p>{earthPriestWallOfText}</p>
+            <p>
+              <Link onClick={() => api.acceptQuest('earth_priest')}>
+                Accept Quest
+              </Link>
+            </p>
+          </>
+        );
+    }
+  };
 
   return (
     <Scene title="Temple Inner Sanctum">
@@ -21,31 +95,7 @@ export const InnerSanctum = () => {
           <Image src={earth_priest_png} />
         </Column>
         <Column>
-          {!startedDialogue && (
-            <>
-              <p>
-                There's an earth priest here
-              </p>
-              <p>
-                <Link onClick={() => setStartedDialogue(true)}>
-                  Talk to him
-                </Link>
-              </p>
-            </>
-          )}
-          {startedDialogue && !acceptedQuest && (
-            <>
-              {earthPriestWallOfText}
-              <p>
-                <Link onClick={() => api.acceptQuest('earth_priest')}>
-                  Accept Quest
-                </Link>
-              </p>
-            </>
-          )}
-          {startedDialogue && acceptedQuest && (
-            <p>Please save the world!</p>
-          )}
+          {renderContent()}
           <Links>
             <Link to={SceneName.TEMPLE_CATACOMBS}>
               Exit
@@ -60,12 +110,6 @@ export const InnerSanctum = () => {
 
 const earthPriestWallOfText = (
   <>
-    <p>
-      Who enters this holy place to seek the wisdom of the earth?
-    </p>
-    <p>
-      Are you the one who will save our world from the coming of the heavenly host?
-    </p>
     <p>
       Know now that you stand at the entrance to the holiest place of my order, the gateway to the places below.
       In the old times, our people worshiped the demons of the earth. We priests made offerings to keep the favor

@@ -12,6 +12,7 @@ export type GameApi = {
   scene: string,
   moveTo: (scene: string) => void,
   player: Player,
+  addGold: (amount: number) => void,
   message: string | null,
   setMessage: (message: string | null) => void,
   buyItem: (itemName: string, cost: number) => void,
@@ -38,9 +39,17 @@ type Props = Readonly<{
 export const useApi = (props: Props): GameApi => {
   const initialPlayer: Player = { ...props.player };
 
-  const [player, setPlayer] = useState<Player>(initialPlayer);
   const [scene, setScene] = useState<string>(props.scene);
   const [message, setMessage] = useState<string | null>(null);
+
+  const [player, setPlayer] = useState<Player>(initialPlayer);
+
+  const addGold = (amount: number) => {
+    setPlayer(player => ({
+      ...player,
+      gold: player.gold + amount
+    }));
+  };
 
   const buyItem = (itemName: string, cost: number) => {
     checkArgument(cost <= player.gold);
@@ -97,6 +106,7 @@ export const useApi = (props: Props): GameApi => {
     scene,
     moveTo,
     player: player!,
+    addGold,
     message,
     setMessage,
     buyItem,

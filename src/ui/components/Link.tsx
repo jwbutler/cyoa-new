@@ -14,7 +14,7 @@ export const Link = ({ to, onClick, children }: Props) => {
   return (
     <a
       className={styles.link}
-      href="src/engine/components#"
+      href="#"
       onClick={e => {
         onClick?.();
         if (to) {

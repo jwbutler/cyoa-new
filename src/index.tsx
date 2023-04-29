@@ -15,8 +15,9 @@ import { OutsideTemple } from './game/scenes/world/OutsideTemple';
 import { InsideTemple } from './game/scenes/temple/InsideTemple';
 import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
 import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
-import { SceneName } from './game/types';
+import { BooleanFlag, SceneName } from './game/types';
 import { TitleScreen } from './game/components/TitleScreen';
+import { useState } from 'preact/compat';
 
 const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.ARMORER]: Armorer,
@@ -26,7 +27,6 @@ const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
   [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
   [SceneName.SPELL_SHOP]: SpellShop,
-  [SceneName.TITLE]: TitleScreen,
   [SceneName.TAVERN]: Tavern,
   [SceneName.TAVERN_BARTENDER]: TavernBartender,
   [SceneName.TAVERN_FARMER]: TavernFarmer,
@@ -36,20 +36,31 @@ const scenes: Record<SceneName, ComponentChild> = {
 };
 
 const App = () => {
+  const [showTitle, setShowTitle] = useState(true);
+  if (showTitle) {
+    return (
+      <TitleScreen
+        onStartGame={() => setShowTitle(false)}
+      />
+    );
+  }
+
   return (
     <Engine
       scenes={scenes}
-      initialScene={SceneName.TITLE}
+      initialScene={SceneName.TOWN}
       Container={Container}
       player={{
         inventory: [],
         spells: [],
         quests: [],
-        gold: 500
+        gold: 0
       }}
       variables={{
         booleans: {
-          'catacombs_kobold': true
+          [BooleanFlag.CATACOMBS_KOBOLD]: true,
+          [BooleanFlag.UNLOCKED_TEMPLE]: false,
+          [BooleanFlag.JOINED_EARTH_CULT]: false
         }
       }}
     />

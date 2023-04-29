@@ -11,7 +11,6 @@ export enum SceneName {
   TAVERN_FARMER = 'tavern_farmer',
   TEMPLE_CATACOMBS = 'temple_catacombs',
   TEMPLE_INNER_SANCTUM = 'temple_inner_sanctum',
-  TITLE = 'title',
   TOWN = 'town'
 }
 
@@ -21,5 +20,6 @@ export enum QuestName {
 
 export enum BooleanFlag {
   CATACOMBS_KOBOLD = 'catacombs_kobold',
-  JOINED_EARTH_CULT = 'joined_earth_cult'
+  JOINED_EARTH_CULT = 'joined_earth_cult',
+  UNLOCKED_TEMPLE = 'unlocked_temple'
 }

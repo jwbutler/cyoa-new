@@ -7,7 +7,7 @@ import { Links } from '../../../ui/components/Links';
 import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import tavern_with_farmer_png from '../../images/tavern_with_farmer.png';
-import { QuestName, SceneName } from '../../types';
+import { BooleanFlag, QuestName, SceneName } from '../../types';
 import { Column } from '../../../ui/components/Column';
 
 type DialogOption =
@@ -63,6 +63,7 @@ export const TavernFarmer = () => {
                   onClick={() => {
                     api.acceptQuest(QuestName.FARMER_KOBOLDS);
                     api.addGold(20);
+                    api.setBoolean(BooleanFlag.UNLOCKED_TEMPLE, true);
                     setDialogOption('third');
                   }}
                 >

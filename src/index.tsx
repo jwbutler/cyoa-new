@@ -11,7 +11,7 @@ import { type ComponentChild, render } from 'preact';
 import { RoadToTheSouth } from './game/scenes/world/RoadToTheSouth';
 import { RoadToTheNorth } from './game/scenes/world/RoadToTheNorth';
 import { OutsideTown } from './game/scenes/world/OutsideTown';
-import { OutsideTemple } from './game/scenes/temple/OutsideTemple';
+import { OutsideTemple } from './game/scenes/world/OutsideTemple';
 import { InsideTemple } from './game/scenes/temple/InsideTemple';
 import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
 import { InnerSanctum } from './game/scenes/temple/InnerSanctum';

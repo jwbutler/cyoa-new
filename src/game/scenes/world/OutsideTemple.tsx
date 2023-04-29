@@ -26,7 +26,7 @@ export const OutsideTemple = () => (
           <Link to={SceneName.INSIDE_TEMPLE}>
             Go inside
           </Link>
-          <Link to={SceneName.ROAD_TO_THE_NORTH}>
+          <Link to={SceneName.OUTSIDE_TOWN}>
             Exit
           </Link>
         </Links>

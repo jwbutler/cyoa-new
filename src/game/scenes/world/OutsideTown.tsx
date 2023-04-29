@@ -33,7 +33,7 @@ export const OutsideTown = () => {
               Enter Town
             </Link>
             <Link to={SceneName.ROAD_TO_THE_NORTH}>
-              Take the Road to the North
+              Follow the road to the north
             </Link>
           </Links>
         </Column>

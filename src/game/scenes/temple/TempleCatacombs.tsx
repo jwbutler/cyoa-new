@@ -3,42 +3,50 @@ import { Link } from '../../../ui/components/Link';
 import { Links } from '../../../ui/components/Links';
 import { useContext } from 'preact/compat';
 import { ApiContext } from '../../../engine/api/ApiContext';
+import { BooleanFlag, SceneName } from '../../types';
+import { Columns } from '../../../ui/components/Columns';
+import { Column } from '../../../ui/components/Column';
 
 export const TempleCatacombs = () => {
   const api = useContext(ApiContext);
-  const koboldExists = api.getBoolean('catacombs_kobold');
+  const koboldExists = api.getBoolean(BooleanFlag.CATACOMBS_KOBOLD);
 
-  const handleKillKobold = () => api.setBoolean('catacombs_kobold', false);
+  const handleKillKobold = () => api.setBoolean(BooleanFlag.CATACOMBS_KOBOLD, false);
 
   return (
     <Scene title="Temple Catacombs">
-      {koboldExists && (
-        <>
-          <p>
-            There's a kobold here
-          </p>
-          <p>
-            <Link onClick={handleKillKobold}>
-              Kill it
+      <Columns>
+        <Column/>
+        <Column>
+          {koboldExists && (
+            <>
+              <p>
+                There's a kobold here
+              </p>
+              <p>
+                <Link onClick={handleKillKobold}>
+                  Kill it
+                </Link>
+              </p>
+            </>
+          )}
+          {!koboldExists && (
+            <p>
+              There's a dead kobold here
+            </p>
+          )}
+          <Links>
+            {!koboldExists && (
+              <Link to={SceneName.TEMPLE_INNER_SANCTUM}>
+                Enter the inner sanctum
+              </Link>
+            )}
+            <Link to={SceneName.INSIDE_TEMPLE}>
+              Exit
             </Link>
-          </p>
-        </>
-      )}
-      {!koboldExists && (
-        <p>
-          There's a dead kobold here
-        </p>
-      )}
-      <Links>
-        {!koboldExists && (
-          <Link to="temple_inner_sanctum">
-            Enter the inner sanctum
-          </Link>
-        )}
-        <Link to="inside_temple">
-          Exit
-        </Link>
-      </Links>
+          </Links>
+        </Column>
+      </Columns>
     </Scene>
   );
 }

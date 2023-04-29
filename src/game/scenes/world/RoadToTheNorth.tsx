@@ -5,6 +5,7 @@ import { Links } from '../../../ui/components/Links';
 import road_to_temple_png from '../../images/road_to_temple.png';
 import { Columns } from '../../../ui/components/Columns';
 import { Column } from '../../../ui/components/Column';
+import { SceneName } from '../../types';
 
 export const RoadToTheNorth = () => (
   <Scene title="Road to the North">
@@ -20,8 +21,8 @@ export const RoadToTheNorth = () => (
           To the south, you can see the town.
         </p>
         <Links>
-          <Link to="outside_temple">Approach the temple</Link>
-          <Link to="outside_town">Head back to town</Link>
+          <Link to={SceneName.OUTSIDE_TEMPLE}>Approach the temple</Link>
+          <Link to={SceneName.OUTSIDE_TOWN}>Head back to town</Link>
         </Links>
       </Column>
     </Columns>

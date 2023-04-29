@@ -6,7 +6,7 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { Column } from '../../../ui/components/Column';
 import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
-import { QuestName, SceneName } from '../../types';
+import { BooleanFlag, QuestName, SceneName } from '../../types';
 import earth_priest_png from '../../images/earth_priest_shaded.png';
 
 type DialogOption =
@@ -19,10 +19,10 @@ type DialogOption =
 export const InnerSanctum = () => {
   const api = useContext(ApiContext);
   const [dialogOption, setDialogOption] = useState<DialogOption>('none');
-  const acceptedQuest = api.player.quests.includes(QuestName.EARTH_PRIEST);
+  const joinedEarthCult = api.getBoolean(BooleanFlag.JOINED_EARTH_CULT);
 
   const renderContent = () => {
-    if (acceptedQuest) {
+    if (joinedEarthCult) {
       return (<p>Please save the world!</p>);
     }
 
@@ -79,8 +79,8 @@ export const InnerSanctum = () => {
           <>
             <p>{earthPriestWallOfText}</p>
             <p>
-              <Link onClick={() => api.acceptQuest('earth_priest')}>
-                Accept Quest
+              <Link onClick={() => api.setBoolean(BooleanFlag.JOINED_EARTH_CULT, true)}>
+                Join the Earth Cult!
               </Link>
             </p>
           </>

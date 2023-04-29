@@ -16,6 +16,10 @@ export enum SceneName {
 }
 
 export enum QuestName {
-  EARTH_PRIEST = 'earth_priest',
   FARMER_KOBOLDS = 'farmer_kobolds'
+}
+
+export enum BooleanFlag {
+  CATACOMBS_KOBOLD = 'catacombs_kobold',
+  JOINED_EARTH_CULT = 'joined_earth_cult'
 }

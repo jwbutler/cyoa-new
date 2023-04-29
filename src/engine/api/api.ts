@@ -18,7 +18,7 @@ export type GameApi = {
   buySpell: (spellName: string, cost: number) => void,
   acceptQuest: (questName: string) => void,
   gameOver: () => void
-  getBoolean: (name: string) => boolean;
+  getBoolean: (name: string) => boolean | undefined;
   setBoolean: (name: string, value: boolean) => void;
 };
 
@@ -41,7 +41,6 @@ export const useApi = (props: Props): GameApi => {
   const [player, setPlayer] = useState<Player>(initialPlayer);
   const [scene, setScene] = useState<string>(props.scene);
   const [message, setMessage] = useState<string | null>(null);
-  const [booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
 
   const buyItem = (itemName: string, cost: number) => {
     checkArgument(cost <= player.gold);
@@ -84,7 +83,9 @@ export const useApi = (props: Props): GameApi => {
     setMessage(null);
   };
 
-  const getBoolean = (name: string) => booleans[name];
+  const [booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
+
+  const getBoolean = (name: string): boolean | undefined => booleans[name];
   const setBoolean = (name: string, value: boolean) => {
     setBooleans(booleans => ({
       ...booleans,

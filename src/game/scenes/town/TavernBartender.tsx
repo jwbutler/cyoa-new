@@ -12,7 +12,7 @@ export const TavernBartender = () => (
     </p>
 
     <Links>
-      <Link to="tavern">
+      <Link to={SceneName.TAVERN}>
         Back
       </Link>
     </Links>

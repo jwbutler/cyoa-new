@@ -5,6 +5,7 @@ import { Links } from '../../../ui/components/Links';
 import temple_exterior from '../../images/temple_exterior.png';
 import { Columns } from '../../../ui/components/Columns';
 import { Column } from '../../../ui/components/Column';
+import { SceneName } from '../../types';
 
 export const OutsideTemple = () => (
   <Scene title="Outside Temple">
@@ -22,10 +23,10 @@ export const OutsideTemple = () => (
           The temple is imposing, though slightly overgrown.
         </p>
         <Links>
-          <Link to="inside_temple">
+          <Link to={SceneName.INSIDE_TEMPLE}>
             Go inside
           </Link>
-          <Link to="road_to_the_north">
+          <Link to={SceneName.ROAD_TO_THE_NORTH}>
             Exit
           </Link>
         </Links>

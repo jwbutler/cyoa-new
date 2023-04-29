@@ -35,7 +35,7 @@ export const Town = () => {
             <Link to={SceneName.TAVERN}>
               Go to the Tavern
             </Link>
-            <Link to={SceneName.OUTSIDE_TOWN}>
+            <Link to={SceneName.ROAD_TO_THE_NORTH}>
               Exit Town
             </Link>
           </Links>

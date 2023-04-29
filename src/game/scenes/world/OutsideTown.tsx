@@ -35,9 +35,6 @@ export const OutsideTown = () => {
             <Link to={SceneName.ROAD_TO_THE_NORTH}>
               Take the Road to the North
             </Link>
-            <Link to={SceneName.ROAD_TO_THE_SOUTH}>
-              Take the Road to the South
-            </Link>
           </Links>
         </Column>
       </Columns>

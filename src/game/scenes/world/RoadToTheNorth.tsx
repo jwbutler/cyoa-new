@@ -15,6 +15,9 @@ export const RoadToTheNorth = () => (
       </Column>
       <Column>
         <p>
+          You're standing on a dirt road outside the town.
+        </p>
+        <p>
           To the north, you see the ancient earth temple.
         </p>
         <p>

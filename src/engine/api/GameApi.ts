@@ -16,8 +16,11 @@ export type GameApi = {
   buySpell: (spellName: string, cost: number) => void,
   acceptQuest: (questName: string) => void,
   completeQuest: (questName: string) => void,
-  gameOver: () => void
-  getBoolean: (name: string) => boolean | undefined;
-  setBoolean: (name: string, value: boolean) => void;
-  booleanFlags: Record<string, boolean>;
+  gameOver: () => void,
+  getBoolean: (name: string) => boolean | undefined,
+  setBoolean: (name: string, value: boolean) => void,
+  booleanFlags: Record<string, boolean>,
+  saveGame: () => void,
+  loadGame: () => void,
+  saveGameExists: () => boolean
 };

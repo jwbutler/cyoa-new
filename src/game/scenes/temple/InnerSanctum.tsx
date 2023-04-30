@@ -17,6 +17,7 @@ type DialogOption =
   | 'wall_of_text_3'
   | 'wall_of_text_4'
   | 'nope'
+  | 'refused'
 ;
 
 export const InnerSanctum = () => {
@@ -166,7 +167,32 @@ export const InnerSanctum = () => {
                   "... Do I really have a choice?"
                 </Link>
               </li>
+              <li>
+                <Link onClick={() => setDialogOption('refused')}>
+                  "No way!  Good luck with that..."
+                </Link>
+              </li>
             </ul>
+          </>
+        );
+      case 'refused':
+        return (
+          <>
+            <p>
+              "Then I have no use for you."
+            </p>
+            <p>
+              The priest raises his hand, makes a strange gesture in your direction,
+              and mutters a strange incantation.
+            </p>
+            <p>
+              Suddenly, a bolt of lightning shoots out of his hand and strikes you.
+              Your body erupts in flames.  The last thing you see as you die is the
+              disapproving face of the earth priest...
+            </p>
+            <Link onClick={() => api.gameOver()}>
+              "Oops..."
+            </Link>
           </>
         );
     }
@@ -180,11 +206,13 @@ export const InnerSanctum = () => {
         </Column>
         <Column>
           {renderContent()}
-          <Links>
-            <Link to={SceneName.TEMPLE_CATACOMBS}>
-              Exit
-            </Link>
-          </Links>
+          {dialogOption !== 'refused' && (
+            <Links>
+              <Link to={SceneName.TEMPLE_CATACOMBS}>
+                Exit
+              </Link>
+            </Links>
+          )}
         </Column>
       </Columns>
     </Scene>

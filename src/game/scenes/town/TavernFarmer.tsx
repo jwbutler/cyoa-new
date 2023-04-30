@@ -2,7 +2,6 @@ import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext, useState } from 'preact/compat';
-import { ComponentChild } from 'preact';
 import { Links } from '../../../ui/components/Links';
 import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
@@ -25,7 +24,7 @@ export const TavernFarmer = () => {
     if (hasAcceptedQuest()) {
       return (
         <p>
-          Good luck killing all those kobolds!
+          "Good luck killing all those kobolds!"
         </p>
       );
     } else {

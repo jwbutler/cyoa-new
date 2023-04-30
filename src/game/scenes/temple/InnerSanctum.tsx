@@ -6,7 +6,7 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { Column } from '../../../ui/components/Column';
 import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
-import { BooleanFlag, QuestName, SceneName } from '../../types';
+import { BooleanFlag, SceneName } from '../../types';
 import earth_priest_png from '../../images/earth_priest_shaded.png';
 
 type DialogOption =
@@ -18,8 +18,14 @@ type DialogOption =
 
 export const InnerSanctum = () => {
   const api = useContext(ApiContext);
-  const [dialogOption, setDialogOption] = useState<DialogOption>('none');
+  const [_dialogOption, setDialogOption] = useState<DialogOption>('none');
+  const dialogOption = _dialogOption!;
   const joinedEarthCult = api.getBoolean(BooleanFlag.JOINED_EARTH_CULT);
+
+  const handleJoinCult = () => {
+    api.setBoolean(BooleanFlag.JOINED_EARTH_CULT, true);
+    api.setBoolean(BooleanFlag.TOWN_ON_FIRE, true);
+  };
 
   const renderContent = () => {
     if (joinedEarthCult) {
@@ -79,12 +85,15 @@ export const InnerSanctum = () => {
           <>
             <p>{earthPriestWallOfText}</p>
             <p>
-              <Link onClick={() => api.setBoolean(BooleanFlag.JOINED_EARTH_CULT, true)}>
+              <Link onClick={handleJoinCult}>
                 Join the Earth Cult!
               </Link>
             </p>
           </>
         );
+      default:
+        // unreachable
+        throw new Error();
     }
   };
 
@@ -106,7 +115,7 @@ export const InnerSanctum = () => {
 
     </Scene>
   );
-}
+};
 
 const earthPriestWallOfText = (
   <>

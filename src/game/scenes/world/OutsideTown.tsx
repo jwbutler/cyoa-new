@@ -6,12 +6,12 @@ import road_to_town_png from '../../images/road_to_town.png';
 import { Columns } from '../../../ui/components/Columns';
 import { useContext } from 'preact/compat';
 import { ApiContext } from '../../../engine/api/ApiContext';
-import { BooleanFlag, QuestName, SceneName } from '../../types';
+import { BooleanFlag, SceneName } from '../../types';
 import { Column } from '../../../ui/components/Column';
 
 export const OutsideTown = () => {
   const api = useContext(ApiContext);
-  const isOnFire = api.getBoolean(BooleanFlag.JOINED_EARTH_CULT);
+  const isOnFire = api.getBoolean(BooleanFlag.TOWN_ON_FIRE);
 
   return (
     <Scene title="Outside Town">

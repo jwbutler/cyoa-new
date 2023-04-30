@@ -16,12 +16,11 @@ type Props = Readonly<{
 }>;
 
 export const useApi = (props: Props): GameApi => {
-  const initialPlayer: Player = { ...props.player };
-
   const [scene, setScene] = useState<string>(props.scene);
   const [message, setMessage] = useState<string | null>(null);
 
-  const [player, setPlayer] = useState<Player>(initialPlayer);
+  const [_player, setPlayer] = useState<Player>(props.player);
+  const player = _player!;
 
   const addGold = (amount: number) => {
     setPlayer(player => ({
@@ -66,7 +65,7 @@ export const useApi = (props: Props): GameApi => {
 
   const handleGameOver = () => {
     alert('Game over!');
-    setPlayer(initialPlayer);
+    setPlayer(props.player);
     setScene(props.scene);
     setMessage(null);
   };

@@ -1,39 +1,9 @@
-import { Town } from './game/scenes/town/Town';
-import { Armorer } from './game/scenes/town/Armorer';
-import './index.css';
-import { Engine } from './engine/components/Engine';
-import { SpellShop } from './game/scenes/town/SpellShop';
-import { Tavern } from './game/scenes/town/Tavern';
-import { TavernBartender } from './game/scenes/town/TavernBartender';
-import { TavernFarmer } from './game/scenes/town/TavernFarmer';
-import { Container } from './ui/components/Container';
-import { type ComponentChild, render } from 'preact';
-import { RoadToTheSouth } from './game/scenes/world/RoadToTheSouth';
-import { RoadToTheNorth } from './game/scenes/world/RoadToTheNorth';
-import { OutsideTown } from './game/scenes/world/OutsideTown';
-import { OutsideTemple } from './game/scenes/world/OutsideTemple';
-import { InsideTemple } from './game/scenes/temple/InsideTemple';
-import { TempleCatacombs } from './game/scenes/temple/TempleCatacombs';
-import { InnerSanctum } from './game/scenes/temple/InnerSanctum';
-import { BooleanFlag, SceneName } from './game/types';
-import { TitleScreen } from './game/components/TitleScreen';
+import { render } from 'preact';
 import { useState } from 'preact/compat';
-
-const scenes: Record<SceneName, ComponentChild> = {
-  [SceneName.ARMORER]: Armorer,
-  [SceneName.INSIDE_TEMPLE]: InsideTemple,
-  [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
-  [SceneName.OUTSIDE_TOWN]: OutsideTown,
-  [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
-  [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
-  [SceneName.SPELL_SHOP]: SpellShop,
-  [SceneName.TAVERN]: Tavern,
-  [SceneName.TAVERN_BARTENDER]: TavernBartender,
-  [SceneName.TAVERN_FARMER]: TavernFarmer,
-  [SceneName.TEMPLE_CATACOMBS]: TempleCatacombs,
-  [SceneName.TEMPLE_INNER_SANCTUM]: InnerSanctum,
-  [SceneName.TOWN]: Town
-};
+import { Engine } from './engine/components/Engine';
+import { TitleScreen } from './game/components/TitleScreen';
+import { getGameDefinition } from './game/game';
+import './index.css';
 
 const App = () => {
   const [showTitle, setShowTitle] = useState(true);
@@ -45,24 +15,16 @@ const App = () => {
     );
   }
 
+  const gameDefinition = getGameDefinition();
+
+  // I want to use the spread operator but it's not type safe
   return (
     <Engine
-      scenes={scenes}
-      initialScene={SceneName.TOWN}
-      Container={Container}
-      player={{
-        inventory: [],
-        spells: [],
-        quests: [],
-        gold: 0
-      }}
-      variables={{
-        booleans: {
-          [BooleanFlag.CATACOMBS_KOBOLD]: true,
-          [BooleanFlag.UNLOCKED_TEMPLE]: false,
-          [BooleanFlag.JOINED_EARTH_CULT]: false
-        }
-      }}
+      scenes={gameDefinition.scenes}
+      initialScene={gameDefinition.initialScene}
+      Container={gameDefinition.Container}
+      player={gameDefinition.player}
+      variables={gameDefinition.variables}
     />
   );
 };

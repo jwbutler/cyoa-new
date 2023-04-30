@@ -8,7 +8,7 @@ export type ContainerProps = Readonly<{
 }>;
 export type ContainerComponent = ({ children }: ContainerProps) => ComponentChild;
 
-type Props = Readonly<{
+export type GameDefinition = Readonly<{
   scenes: Record<string, ComponentChild>,
   initialScene: string,
   player: {
@@ -20,7 +20,8 @@ type Props = Readonly<{
   variables?: {
     booleans?: Record<string, boolean>
   },
-  Container?: ContainerComponent
+  // this looks redundant
+  Container?: ContainerComponent | undefined
 }>;
 
 export const Engine = ({
@@ -29,7 +30,7 @@ export const Engine = ({
   player,
   variables,
   Container
-}: Props) => {
+}: GameDefinition) => {
   const api = useApi({
     player,
     variables,

@@ -13,7 +13,6 @@ import { Town } from './scenes/town/Town';
 import { OutsideTemple } from './scenes/world/OutsideTemple';
 import { OutsideTown } from './scenes/world/OutsideTown';
 import { RoadToTheNorth } from './scenes/world/RoadToTheNorth';
-import { RoadToTheSouth } from './scenes/world/RoadToTheSouth';
 import { BooleanFlag, SceneName } from './types';
 
 const scenes: Record<SceneName, ComponentChild> = {
@@ -22,7 +21,6 @@ const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
   [SceneName.OUTSIDE_TOWN]: OutsideTown,
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
-  [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
   [SceneName.SHOPKEEPER]: Shopkeeper,
   [SceneName.TAVERN]: Tavern,
   [SceneName.TAVERN_BARTENDER]: TavernBartender,

@@ -4,7 +4,6 @@ export enum SceneName {
   OUTSIDE_TEMPLE = 'outside_temple',
   OUTSIDE_TOWN = 'outside_town',
   ROAD_TO_THE_NORTH = 'road_to_the_north',
-  ROAD_TO_THE_SOUTH = 'road_to_the_south',
   SHOPKEEPER = 'shopkeeper',
   TAVERN = 'tavern',
   TAVERN_BARTENDER = 'tavern_bartender',

@@ -7,7 +7,7 @@ import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
 import shop_png from '../../images/shop.png';
 import shopkeeper_png from '../../images/shopkeeper_shaded.png';
-import { SceneName } from '../../types';
+import { BooleanFlag, QuestName, SceneName } from '../../types';
 import { Column } from '../../../ui/components/Column';
 
 type SpellListing = Readonly<{
@@ -22,7 +22,7 @@ type DialogOption =
   | 'quest'
   ;
 
-export const SpellShop = () => {
+export const Shopkeeper = () => {
   const api = useContext(ApiContext);
   const { player } = api;
 
@@ -36,7 +36,17 @@ export const SpellShop = () => {
   };
 
   const [selectedDialogOption, setSelectedDialogOption] = useState<DialogOption>('none');
+  const townOnFire = api.getBoolean(BooleanFlag.TOWN_ON_FIRE);
+
   const renderContent = () => {
+    if (townOnFire) {
+      return (
+        <p>
+          The shop is deserted.
+        </p>
+      );
+    }
+
     switch (selectedDialogOption) {
       case 'none':
         return (
@@ -55,7 +65,7 @@ export const SpellShop = () => {
                   Ask about news
                 </Link>
               </li>
-              {api.player.quests.length > 0 && (
+              {api.player.quests.includes(QuestName.FARMER_KOBOLDS) && (
                 <li>
                   <Link onClick={() => setSelectedDialogOption('quest')}>
                     Ask about quest
@@ -123,13 +133,15 @@ export const SpellShop = () => {
               filter: 'hue-rotate(180deg)',
               transform: 'scaleX(-1)'
             }} />
-            <Image src={shopkeeper_png} style={{
-              position: 'absolute',
-              filter: 'hue-rotate(180deg)',
-              transform: 'scaleX(-1)',
-              left: 0,
-              top: 0
-            }} />
+            {!townOnFire && (
+              <Image src={shopkeeper_png} style={{
+                position: 'absolute',
+                filter: 'hue-rotate(180deg)',
+                transform: 'scaleX(-1)',
+                left: 0,
+                top: 0
+              }} />
+            )}
           </div>
         </Column>
         <Column>

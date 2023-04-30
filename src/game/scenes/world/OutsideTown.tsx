@@ -2,12 +2,12 @@ import { Image } from '../../../ui/components/Image';
 import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
 import { Links } from '../../../ui/components/Links';
-import road_to_town_png from '../../images/road_to_town.png';
 import { Columns } from '../../../ui/components/Columns';
 import { useContext } from 'preact/compat';
 import { ApiContext } from '../../../engine/api/ApiContext';
 import { BooleanFlag, SceneName } from '../../types';
 import { Column } from '../../../ui/components/Column';
+import road_to_town_png from '../../images/road_to_town.png';
 
 export const OutsideTown = () => {
   const api = useContext(ApiContext);

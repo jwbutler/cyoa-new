@@ -5,7 +5,7 @@ import { InnerSanctum } from './scenes/temple/InnerSanctum';
 import { InsideTemple } from './scenes/temple/InsideTemple';
 import { TempleCatacombs } from './scenes/temple/TempleCatacombs';
 import { Armorer } from './scenes/town/Armorer';
-import { SpellShop } from './scenes/town/SpellShop';
+import { Shopkeeper } from './scenes/town/Shopkeeper';
 import { Tavern } from './scenes/town/Tavern';
 import { TavernBartender } from './scenes/town/TavernBartender';
 import { TavernFarmer } from './scenes/town/TavernFarmer';
@@ -23,7 +23,7 @@ const scenes: Record<SceneName, ComponentChild> = {
   [SceneName.OUTSIDE_TOWN]: OutsideTown,
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
   [SceneName.ROAD_TO_THE_SOUTH]: RoadToTheSouth,
-  [SceneName.SPELL_SHOP]: SpellShop,
+  [SceneName.SHOPKEEPER]: Shopkeeper,
   [SceneName.TAVERN]: Tavern,
   [SceneName.TAVERN_BARTENDER]: TavernBartender,
   [SceneName.TAVERN_FARMER]: TavernFarmer,

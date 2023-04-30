@@ -6,7 +6,7 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { Column } from '../../../ui/components/Column';
 import { Columns } from '../../../ui/components/Columns';
 import { Image } from '../../../ui/components/Image';
-import { BooleanFlag, SceneName } from '../../types';
+import { BooleanFlag, QuestName, SceneName } from '../../types';
 import earth_priest_png from '../../images/earth_priest_shaded.png';
 
 type DialogOption =
@@ -23,6 +23,7 @@ export const InnerSanctum = () => {
   const joinedEarthCult = api.getBoolean(BooleanFlag.JOINED_EARTH_CULT);
 
   const handleJoinCult = () => {
+    api.completeQuest(QuestName.FARMER_KOBOLDS);
     api.setBoolean(BooleanFlag.JOINED_EARTH_CULT, true);
     api.setBoolean(BooleanFlag.TOWN_ON_FIRE, true);
   };

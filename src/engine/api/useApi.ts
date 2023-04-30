@@ -42,7 +42,7 @@ export const useApi = (props: Props): GameApi => {
   const buySpell = (spellName: string, cost: number) => {
     checkArgument(cost <= player.gold);
     setPlayer({
-      ...player!,
+      ...player,
       gold: player.gold - cost,
       spells: [...player.spells, spellName]
     });
@@ -51,11 +51,18 @@ export const useApi = (props: Props): GameApi => {
 
   const acceptQuest = (questName: string) => {
     setPlayer({
-      ...player!,
+      ...player,
       quests: [...player.quests, questName]
     });
-    console.log('wtf');
     setMessage(`Accepted quest: ${questName}`);
+  };
+
+  const completeQuest = (questName: string) => {
+    setPlayer({
+      ...player,
+      quests: player.quests.filter(q => q !== questName)
+    });
+    setMessage(`Completed quest: ${questName}`);
   };
 
   const moveTo = (sceneName: string) => {
@@ -63,7 +70,7 @@ export const useApi = (props: Props): GameApi => {
     setMessage(null);
   };
 
-  const handleGameOver = () => {
+  const gameOver = () => {
     alert('Game over!');
     setPlayer(props.player);
     setScene(props.scene);
@@ -83,15 +90,17 @@ export const useApi = (props: Props): GameApi => {
   return {
     scene,
     moveTo,
-    player: player!,
+    player,
     addGold,
     message,
     setMessage,
     buyItem,
     buySpell,
     acceptQuest,
-    gameOver: handleGameOver,
+    completeQuest,
+    gameOver,
     getBoolean,
-    setBoolean
+    setBoolean,
+    booleanFlags: booleans
   };
 };

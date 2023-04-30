@@ -15,7 +15,9 @@ export type GameApi = {
   buyItem: (itemName: string, cost: number) => void,
   buySpell: (spellName: string, cost: number) => void,
   acceptQuest: (questName: string) => void,
+  completeQuest: (questName: string) => void,
   gameOver: () => void
   getBoolean: (name: string) => boolean | undefined;
   setBoolean: (name: string, value: boolean) => void;
+  booleanFlags: Record<string, boolean>;
 };

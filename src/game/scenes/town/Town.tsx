@@ -29,8 +29,8 @@ export const Town = () => {
             <Link to={SceneName.ARMORER}>
               Go to the Armorer
             </Link>
-            <Link to={SceneName.SPELL_SHOP}>
-              Go to the Spell Shop
+            <Link to={SceneName.SHOPKEEPER}>
+              Go to the Shopkeeper
             </Link>
             <Link to={SceneName.TAVERN}>
               Go to the Tavern

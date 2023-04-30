@@ -18,6 +18,7 @@ export const Container = ({ children }: Props) => {
         <div>Items: {JSON.stringify(player.inventory)}</div>
         <div>Spells: {JSON.stringify(player.spells)}</div>
         <div>Quests: {JSON.stringify(player.quests)}</div>
+        <div>Boolean Flags: {JSON.stringify(api.booleanFlags, null, 2)}</div>
       </pre>
     </div>
   );

@@ -12,7 +12,10 @@ import earth_priest_png from '../../images/earth_priest_shaded.png';
 type DialogOption =
   | 'none'
   | 'greeting'
-  | 'wall_of_text'
+  | 'wall_of_text_1'
+  | 'wall_of_text_2'
+  | 'wall_of_text_3'
+  | 'wall_of_text_4'
   | 'nope'
 ;
 
@@ -58,12 +61,12 @@ export const InnerSanctum = () => {
             </p>
             <ul>
               <li>
-                <Link onClick={() => setDialogOption('wall_of_text')}>
+                <Link onClick={() => setDialogOption('wall_of_text_1')}>
                   "Yeah"
                 </Link>
               </li>
               <li>
-                <Link onClick={() => setDialogOption('wall_of_text')}>
+                <Link onClick={() => setDialogOption('wall_of_text_1')}>
                   "...Maybe?"
                 </Link>
               </li>
@@ -81,20 +84,91 @@ export const InnerSanctum = () => {
             The earth priest frowns at you in disapproval.
           </p>
         );
-      case 'wall_of_text':
+      case 'wall_of_text_1':
         return (
           <>
-            <p>{earthPriestWallOfText}</p>
             <p>
-              <Link onClick={handleJoinCult}>
-                Join the Earth Cult!
+              "Know now that you stand at the entrance to the holiest place of my order,
+              the gateway to the places below.
+            </p>
+            <p>
+              In the old times, our people worshipped the demons of the earth.
+              We priests made offerings to keep the favor of the demons,
+              and mankind thrived in this land."
+            </p>
+            <p>
+              <Link onClick={() => setDialogOption('wall_of_text_2')}>
+                "So what happened?"
               </Link>
             </p>
           </>
         );
-      default:
-        // unreachable
-        throw new Error();
+      case 'wall_of_text_2':
+        return (
+          <>
+            <p>
+              "Then there came a messenger from the sky.
+              The Messenger performed many wonders, and told the people of the
+              coming of the heavenly race.
+            </p>
+            <p>
+              Those who took up the Messenger's cause were rewarded with great gifts.
+              The Messenger armed them with weapons against which none could stand."
+            </p>
+            <p>
+              <Link onClick={() => setDialogOption('wall_of_text_3')}>
+                "That must have been rough..."
+              </Link>
+            </p>
+          </>
+        );
+      case 'wall_of_text_3':
+        return (
+          <>
+            <p>
+              "The priests of the earth fought back with all our power,
+              but we failed to raise the demons to our side when we most needed them.
+              Defeated, we scattered across the countryside and went into hiding.
+            </p>
+            <p>
+              Now the people toil under the Messenger's rule,
+              preparing the land for the coming of the heavenly race."
+            </p>
+            <p>
+              <Link onClick={() => setDialogOption('wall_of_text_4')}>
+                "What can we do about this?"
+              </Link>
+            </p>
+          </>
+        );
+      case 'wall_of_text_4':
+        return (
+          <>
+            <p>
+              "The secrets to summon the power of the demons can still be found here,
+              if you are pure of heart and master of your own thoughts.
+              Bind the demons of the earth to your will and you may yet
+              overcome the heavenly race and save mankind.
+            </p>
+            <p>
+              If you are willing, I will initiate you into the mysteries of the Earth Cult,
+              so that you might draw upon the power of the demons to defeat the forces of the Heavens.
+              Will you take on this quest?"
+            </p>
+            <ul>
+              <li>
+                <Link onClick={handleJoinCult}>
+                  "Yes!"
+                </Link>
+              </li>
+              <li>
+                <Link onClick={handleJoinCult}>
+                  "... Do I really have a choice?"
+                </Link>
+              </li>
+            </ul>
+          </>
+        );
     }
   };
 
@@ -113,37 +187,6 @@ export const InnerSanctum = () => {
           </Links>
         </Column>
       </Columns>
-
     </Scene>
   );
 };
-
-const earthPriestWallOfText = (
-  <>
-    <p>
-      Know now that you stand at the entrance to the holiest place of my order, the gateway to the places below.
-      In the old times, our people worshiped the demons of the earth. We priests made offerings to keep the favor
-      of the demons, and mankind thrived in this land.
-    </p>
-    <p>
-      Then there came a messenger from the sky. The Messenger performed many wonders, and told the people of the
-      coming of the heavenly race.
-    </p>
-    <p>
-      Those who took up the Messenger's cause were rewarded with great gifts. The Messenger armed them with
-      weapons against which none could stand.
-    </p>
-    <p>
-      The priests of the earth fought back with all our power, but we failed to raise the demons to our side when
-      we most needed. Defeated, we scattered across the countryside and went into hiding.
-    </p>
-    <p>
-      Now the people toil under the messenger's rule, preparing the land for the coming of the heavenly race.
-    </p>
-    <p>
-      The secrets to summon the power of the demons can still be found here, if you are pure of heart and master
-      of your own thoughts. Bind the demons of the earth to your will and you may yet overcome the heavenly race
-      and save mankind.
-    </p>
-  </>
-);

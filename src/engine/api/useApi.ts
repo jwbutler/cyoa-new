@@ -1,6 +1,7 @@
 import { checkArgument } from '../../preconditions';
 import { useState } from 'preact/compat';
 import { GameApi, Player } from './GameApi';
+import { saveGame, loadGame, saveGameExists } from './persistence';
 
 type Props = Readonly<{
   player: {
@@ -87,6 +88,20 @@ export const useApi = (props: Props): GameApi => {
     }));
   };
 
+  const handleSaveGame = () => {
+    const state = { scene, message, player, booleans };
+    saveGame(state);
+    setMessage('Game Saved.');
+  };
+
+  const handleLoadGame = () => {
+    const { scene, message, player, booleans } = loadGame();
+    setScene(scene);
+    setMessage('Game Loaded.'); // overwrites message, oh well
+    setPlayer(player)
+    setBooleans(booleans);
+  };
+
   return {
     scene,
     moveTo,
@@ -101,6 +116,9 @@ export const useApi = (props: Props): GameApi => {
     gameOver,
     getBoolean,
     setBoolean,
-    booleanFlags: booleans
+    booleanFlags: booleans,
+    saveGame: handleSaveGame,
+    loadGame: handleLoadGame,
+    saveGameExists
   };
 };

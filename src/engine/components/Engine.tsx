@@ -1,4 +1,4 @@
-import { useApi } from '../api/api';
+import { useApi } from '../api/useApi';
 import { checkNotNull } from '../../preconditions';
 import { ApiContext } from '../api/ApiContext';
 import type { ComponentChildren, ComponentChild } from 'preact';

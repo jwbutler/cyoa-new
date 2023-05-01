@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Engine
       scenes={gameDefinition.scenes}
-      initialScene={gameDefinition.initialScene}
+      startingLocation={gameDefinition.startingLocation}
       Container={gameDefinition.Container}
       player={gameDefinition.player}
       variables={gameDefinition.variables}

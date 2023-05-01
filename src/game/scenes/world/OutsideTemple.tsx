@@ -1,3 +1,4 @@
+import { Direction } from '../../../engine/api/GameApi';
 import { Image } from '../../../ui/components/Image';
 import { Scene } from '../../../ui/components/Scene';
 import { Link } from '../../../ui/components/Link';
@@ -29,7 +30,7 @@ export const OutsideTemple = () => {
             <Link to={SceneName.INSIDE_TEMPLE}>
               Go inside
             </Link>
-            <Link to={SceneName.OUTSIDE_TOWN}>
+            <Link to={SceneName.ROAD_TO_THE_NORTH} direction={Direction.SOUTH}>
               Exit
             </Link>
           </Links>
@@ -47,7 +48,7 @@ export const OutsideTemple = () => {
           <i>(Maybe somebody in town can tell you more about the temple.)</i>
         </p>
         <Links>
-          <Link to={SceneName.OUTSIDE_TOWN}>
+          <Link to={SceneName.ROAD_TO_THE_NORTH} direction={Direction.SOUTH}>
             Exit
           </Link>
         </Links>

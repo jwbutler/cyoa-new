@@ -88,7 +88,6 @@ export const Armorer = () => {
                 )
               ))}
             </ul>
-
             <Link onClick={() => setSelectedDialogOption('none')}>
               Ask about something else
             </Link>
@@ -107,6 +106,9 @@ export const Armorer = () => {
                 Farmer Jajika and Keks the Chemist couldn't pay up and they got dragged off.
                 If only I were a young man again... with both my arms, that is..."
               </p>
+              <Link onClick={() => setSelectedDialogOption('none')}>
+                Ask about something else
+              </Link>
             </>
           )
         }
@@ -116,7 +118,6 @@ export const Armorer = () => {
               "As you can see, I haven't got much in stock. Folks have been buying more than usual.
               Everyone feels they need to protect themselves these days."
             </p>
-
             <Link onClick={() => setSelectedDialogOption('none')}>
               Ask about something else
             </Link>
@@ -129,7 +130,6 @@ export const Armorer = () => {
               "You better be careful around the old temple. It's not safe. Of course, when I was your age,
               the foul things used to fear the old temple. Now it seems that's where they all gather."
             </p>
-
             <Link onClick={() => setSelectedDialogOption('none')}>
               Ask about something else
             </Link>
@@ -143,7 +143,6 @@ export const Armorer = () => {
               I remember when the messenger came to our village.
               I was 10 years old. There were some of us who wanted to fight."
             </p>
-
             <Link onClick={() => setSelectedDialogOption('quest_earth_cult_2')}>
               "What happened?"
             </Link>
@@ -164,7 +163,6 @@ export const Armorer = () => {
               After that, nobody talked about fighting back.
               We just paid our taxes and counted ourselves lucky to be alive."
             </p>
-
             <Link onClick={() => setSelectedDialogOption('none')}>
               "Sounds rough, dude"
             </Link>

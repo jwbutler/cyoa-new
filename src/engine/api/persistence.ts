@@ -1,7 +1,7 @@
-import { Player } from './GameApi';
+import type { Player, Location } from './GameApi';
 
 export type GameState = Readonly<{
-  scene: string,
+  location: Location,
   message: string | null,
   player: Player,
   booleans: Record<string, boolean>

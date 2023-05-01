@@ -1,5 +1,4 @@
-import { ComponentChild } from 'preact';
-import { GameDefinition } from '../engine/components/Engine';
+import type { GameDefinition, SceneType } from '../engine/components/Engine';
 import { Container } from '../ui/components/Container';
 import { InnerSanctum } from './scenes/temple/InnerSanctum';
 import { InsideTemple } from './scenes/temple/InsideTemple';
@@ -11,15 +10,13 @@ import { TavernBartender } from './scenes/town/TavernBartender';
 import { TavernFarmer } from './scenes/town/TavernFarmer';
 import { Town } from './scenes/town/Town';
 import { OutsideTemple } from './scenes/world/OutsideTemple';
-import { OutsideTown } from './scenes/world/OutsideTown';
 import { RoadToTheNorth } from './scenes/world/RoadToTheNorth';
 import { BooleanFlag, SceneName } from './types';
 
-const scenes: Record<SceneName, ComponentChild> = {
+const scenes: Record<SceneName, SceneType> = {
   [SceneName.ARMORER]: Armorer,
   [SceneName.INSIDE_TEMPLE]: InsideTemple,
   [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
-  [SceneName.OUTSIDE_TOWN]: OutsideTown,
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
   [SceneName.SHOPKEEPER]: Shopkeeper,
   [SceneName.TAVERN]: Tavern,
@@ -48,7 +45,10 @@ const variables = {
 
 export const getGameDefinition = (): GameDefinition => ({
   scenes,
-  initialScene: SceneName.TOWN,
+  startingLocation: {
+    scene: SceneName.TOWN,
+    direction: null
+  },
   Container,
   player,
   variables

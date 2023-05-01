@@ -5,9 +5,21 @@ export type Player = Readonly<{
   gold: number
 }>;
 
-export type GameApi = {
+export enum Direction {
+  NORTH = 'north',
+  SOUTH = 'south',
+  EAST = 'east',
+  WEST = 'west'
+}
+
+export type Location = Readonly<{
   scene: string,
-  moveTo: (scene: string) => void,
+  direction: Direction | null
+}>;
+
+export type GameApi = {
+  location: Location,
+  moveTo: (location: Location) => void,
   player: Player,
   addGold: (amount: number) => void,
   message: string | null,

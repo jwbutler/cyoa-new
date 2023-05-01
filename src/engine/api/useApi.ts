@@ -1,7 +1,7 @@
 import { checkArgument } from '../../preconditions';
 import { useState } from 'preact/compat';
-import { GameApi, Player } from './GameApi';
-import { saveGame, loadGame, saveGameExists } from './persistence';
+import { Direction, GameApi, Location, Player } from './GameApi';
+import { saveGame, loadGame, saveGameExists, GameState } from './persistence';
 
 type Props = Readonly<{
   player: {
@@ -13,11 +13,12 @@ type Props = Readonly<{
   variables?: {
     booleans?: Record<string, boolean>
   },
-  scene: string
+  location: Location
 }>;
 
 export const useApi = (props: Props): GameApi => {
-  const [scene, setScene] = useState<string>(props.scene);
+  const [_location, setLocation] = useState(props.location);
+  const location = _location!;
   const [message, setMessage] = useState<string | null>(null);
 
   const [_player, setPlayer] = useState<Player>(props.player);
@@ -66,19 +67,21 @@ export const useApi = (props: Props): GameApi => {
     setMessage(`Completed quest: ${questName}`);
   };
 
-  const moveTo = (sceneName: string) => {
-    setScene(sceneName);
+  const moveTo = (location: Location) => {
+    console.log('in moveTo');
+    setLocation(location);
     setMessage(null);
   };
 
   const gameOver = () => {
     alert('Game over!');
     setPlayer(props.player);
-    setScene(props.scene);
+    setLocation(props.location);
     setMessage(null);
   };
 
-  const [booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
+  const [_booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
+  const booleans = _booleans!;
 
   const getBoolean = (name: string): boolean | undefined => booleans[name];
   const setBoolean = (name: string, value: boolean) => {
@@ -89,21 +92,21 @@ export const useApi = (props: Props): GameApi => {
   };
 
   const handleSaveGame = () => {
-    const state = { scene, message, player, booleans };
+    const state: GameState = { location, message, player, booleans };
     saveGame(state);
     setMessage('Game Saved.');
   };
 
   const handleLoadGame = () => {
-    const { scene, message, player, booleans } = loadGame();
-    setScene(scene);
+    const { location, message, player, booleans } = loadGame();
+    setLocation(location);
     setMessage('Game Loaded.'); // overwrites message, oh well
-    setPlayer(player)
+    setPlayer(player);
     setBooleans(booleans);
   };
 
   return {
-    scene,
+    location,
     moveTo,
     player,
     addGold,

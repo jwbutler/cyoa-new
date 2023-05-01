@@ -1,16 +1,25 @@
-import { useApi } from '../api/useApi';
+import type { ComponentChild, ComponentChildren } from 'preact';
 import { checkNotNull } from '../../preconditions';
 import { ApiContext } from '../api/ApiContext';
-import type { ComponentChildren, ComponentChild } from 'preact';
+import type { Direction, Location } from '../api/GameApi';
+import { useApi } from '../api/useApi';
 
 export type ContainerProps = Readonly<{
   children: ComponentChildren
 }>;
 export type ContainerComponent = ({ children }: ContainerProps) => ComponentChild;
 
+export type SceneProps = Readonly<{
+  direction: Direction
+}>;
+
+export type SceneType =
+  | (() => ComponentChild)
+  | ((props: SceneProps) => ComponentChild);
+
 export type GameDefinition = Readonly<{
-  scenes: Record<string, ComponentChild>,
-  initialScene: string,
+  scenes: Record<string, SceneType>,
+  startingLocation: Location,
   player: {
     inventory: string[],
     spells: string[],
@@ -26,7 +35,7 @@ export type GameDefinition = Readonly<{
 
 export const Engine = ({
   scenes,
-  initialScene,
+  startingLocation,
   player,
   variables,
   Container
@@ -34,14 +43,16 @@ export const Engine = ({
   const api = useApi({
     player,
     variables,
-    scene: initialScene
+    location: startingLocation
   });
 
-  const Scene = checkNotNull(scenes[api.scene]);
-  const scene = <Scene />;
+  const { scene, direction } = api.location;
+  const Scene = checkNotNull(scenes[scene]);
+  const child = <Scene direction={direction} />;
+
   const content = (Container)
-    ? <Container>{scene}</Container>
-    : scene;
+    ? <Container>{child}</Container>
+    : child;
 
   return (
     <ApiContext.Provider value={api}>

@@ -20,7 +20,7 @@ type DialogOption =
   | 'refused'
 ;
 
-export const InnerSanctum = () => {
+export const EarthTempleInnerSanctum = () => {
   const api = useContext(ApiContext);
   const [_dialogOption, setDialogOption] = useState<DialogOption>('none');
   const dialogOption = _dialogOption!;
@@ -208,7 +208,7 @@ export const InnerSanctum = () => {
           {renderContent()}
           {dialogOption !== 'refused' && (
             <Links>
-              <Link to={SceneName.TEMPLE_CATACOMBS}>
+              <Link to={SceneName.EARTH_TEMPLE_CATACOMBS}>
                 Exit
               </Link>
             </Links>

@@ -1,29 +1,33 @@
 import type { GameDefinition, SceneType } from '../engine/components/Engine';
 import { Container } from '../ui/components/Container';
-import { InnerSanctum } from './scenes/temple/InnerSanctum';
-import { InsideTemple } from './scenes/temple/InsideTemple';
-import { TempleCatacombs } from './scenes/temple/TempleCatacombs';
+import { EarthTempleInnerSanctum } from './scenes/earth_temple/EarthTempleInnerSanctum';
+import { InsideEarthTemple } from './scenes/earth_temple/InsideEarthTemple';
+import { EarthTempleCatacombs } from './scenes/earth_temple/EarthTempleCatacombs';
 import { Armorer } from './scenes/town/Armorer';
 import { Shopkeeper } from './scenes/town/Shopkeeper';
 import { Tavern } from './scenes/town/Tavern';
 import { TavernBartender } from './scenes/town/TavernBartender';
 import { TavernFarmer } from './scenes/town/TavernFarmer';
 import { Town } from './scenes/town/Town';
-import { OutsideTemple } from './scenes/world/OutsideTemple';
+import { OutsideEarthTemple } from './scenes/world/OutsideEarthTemple';
 import { RoadToTheNorth } from './scenes/world/RoadToTheNorth';
 import { BooleanFlag, SceneName } from './types';
+import { RoadToTheEast } from './scenes/world/RoadToTheEast';
+import { InsideHeavenTemple } from './scenes/heaven_temple/InsideHeavenTemple';
 
 const scenes: Record<SceneName, SceneType> = {
   [SceneName.ARMORER]: Armorer,
-  [SceneName.INSIDE_TEMPLE]: InsideTemple,
-  [SceneName.OUTSIDE_TEMPLE]: OutsideTemple,
+  [SceneName.INSIDE_EARTH_TEMPLE]: InsideEarthTemple,
+  [SceneName.INSIDE_HEAVEN_TEMPLE]: InsideHeavenTemple,
+  [SceneName.OUTSIDE_EARTH_TEMPLE]: OutsideEarthTemple,
+  [SceneName.ROAD_TO_THE_EAST]: RoadToTheEast,
   [SceneName.ROAD_TO_THE_NORTH]: RoadToTheNorth,
   [SceneName.SHOPKEEPER]: Shopkeeper,
   [SceneName.TAVERN]: Tavern,
   [SceneName.TAVERN_BARTENDER]: TavernBartender,
   [SceneName.TAVERN_FARMER]: TavernFarmer,
-  [SceneName.TEMPLE_CATACOMBS]: TempleCatacombs,
-  [SceneName.TEMPLE_INNER_SANCTUM]: InnerSanctum,
+  [SceneName.EARTH_TEMPLE_CATACOMBS]: EarthTempleCatacombs,
+  [SceneName.EARTH_TEMPLE_INNER_SANCTUM]: EarthTempleInnerSanctum,
   [SceneName.TOWN]: Town
 };
 

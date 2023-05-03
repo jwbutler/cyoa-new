@@ -36,8 +36,11 @@ export const RoadToTheNorth = (props: SceneProps) => {
                 To the south, you can see the town.
               </p>
               <Links>
-                <Link to={SceneName.OUTSIDE_TEMPLE}>
+                <Link to={SceneName.OUTSIDE_EARTH_TEMPLE}>
                   Approach the temple
+                </Link>
+                <Link to={SceneName.ROAD_TO_THE_EAST} direction={Direction.NORTH}>
+                  Follow the road to the east
                 </Link>
                 <Link to={SceneName.ROAD_TO_THE_NORTH} direction={Direction.SOUTH}>
                   Head back to town
@@ -66,6 +69,9 @@ export const RoadToTheNorth = (props: SceneProps) => {
               <Links>
                 <Link to={SceneName.TOWN}>
                   Enter Town
+                </Link>
+                <Link to={SceneName.ROAD_TO_THE_EAST} direction={Direction.NORTH}>
+                  Follow the road to the east
                 </Link>
                 <Link to={SceneName.ROAD_TO_THE_NORTH} direction={Direction.NORTH}>
                   Follow the road to the north

@@ -7,7 +7,7 @@ import { BooleanFlag, SceneName } from '../../types';
 import { Columns } from '../../../ui/components/Columns';
 import { Column } from '../../../ui/components/Column';
 
-export const TempleCatacombs = () => {
+export const EarthTempleCatacombs = () => {
   const api = useContext(ApiContext);
   const koboldExists = api.getBoolean(BooleanFlag.CATACOMBS_KOBOLD);
 
@@ -37,11 +37,11 @@ export const TempleCatacombs = () => {
           )}
           <Links>
             {!koboldExists && (
-              <Link to={SceneName.TEMPLE_INNER_SANCTUM}>
+              <Link to={SceneName.EARTH_TEMPLE_INNER_SANCTUM}>
                 Enter the inner sanctum
               </Link>
             )}
-            <Link to={SceneName.INSIDE_TEMPLE}>
+            <Link to={SceneName.INSIDE_EARTH_TEMPLE}>
               Exit
             </Link>
           </Links>

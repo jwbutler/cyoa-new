@@ -10,7 +10,7 @@ import { ApiContext } from '../../../engine/api/ApiContext';
 import { useContext } from 'preact/compat';
 import temple_exterior from '../../images/temple_exterior.png';
 
-export const OutsideTemple = () => {
+export const OutsideEarthTemple = () => {
   const api = useContext(ApiContext);
   const unlockedTemple = api.getBoolean(BooleanFlag.UNLOCKED_TEMPLE);
 
@@ -27,7 +27,7 @@ export const OutsideTemple = () => {
             The temple is imposing, though slightly overgrown.
           </p>
           <Links>
-            <Link to={SceneName.INSIDE_TEMPLE}>
+            <Link to={SceneName.INSIDE_EARTH_TEMPLE}>
               Go inside
             </Link>
             <Link to={SceneName.ROAD_TO_THE_NORTH} direction={Direction.SOUTH}>

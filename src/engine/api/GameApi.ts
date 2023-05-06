@@ -17,13 +17,19 @@ export type Location = Readonly<{
   direction: Direction | null
 }>;
 
+export type Message = Readonly<{
+  message: string,
+  turn: number
+}>;
+
 export type GameApi = {
+  turn: number
   location: Location,
   moveTo: (location: Location) => void,
   player: Player,
   addGold: (amount: number) => void,
-  message: string | null,
-  setMessage: (message: string | null) => void,
+  getActiveMessages: () => string[],
+  addMessage: (message: string) => void,
   buyItem: (itemName: string, cost: number) => void,
   buySpell: (spellName: string, cost: number) => void,
   acceptQuest: (questName: string) => void,

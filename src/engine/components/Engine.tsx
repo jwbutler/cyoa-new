@@ -1,5 +1,5 @@
 import type { ComponentChild, ComponentChildren } from 'preact';
-import { checkNotNull } from '../../preconditions';
+import { checkNotNull } from '../../utils/preconditions';
 import { ApiContext } from '../api/ApiContext';
 import type { Direction, Location } from '../api/GameApi';
 import { useApi } from '../api/useApi';

@@ -10,15 +10,18 @@ type Props = Readonly<{
 
 export const Scene = ({ title, children }: Props) => {
   const api = useContext(ApiContext);
+  const messages = api.getActiveMessages();
 
   return (
     <div className={styles.scene}>
       <div className={styles.title}>
         {title}
       </div>
-      {api.message && (
-        <div className={styles.message}>
-          {api.message}
+      {messages.length > 0 && (
+        <div className={styles.messages}>
+          {messages.map(message =>
+            <p>{message}</p>
+          )}
         </div>
       )}
       {children}

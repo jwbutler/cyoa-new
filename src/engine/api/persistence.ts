@@ -1,8 +1,8 @@
-import type { Player, Location } from './GameApi';
+import type { Player, Location, Message } from './GameApi';
 
 export type GameState = Readonly<{
   location: Location,
-  message: string | null,
+  messages: Message[],
   player: Player,
   booleans: Record<string, boolean>
 }>;

@@ -7,10 +7,15 @@
   text-align: center;
 }
 
-.message {
+.messages {
   font-size: 1.0em;
   font-weight: bold;
   font-family: sans-serif;
   background-color: var(--color-background-highlight);
   padding: 10px;
+}
+
+.messages > p {
+  margin: 0;
+  padding: 0;
 }

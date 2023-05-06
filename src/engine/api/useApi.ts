@@ -1,6 +1,6 @@
-import { checkArgument } from '../../preconditions';
-import { useState } from 'preact/compat';
-import { Direction, GameApi, Location, Player } from './GameApi';
+import { checkArgument } from '../../utils/preconditions';
+import { useState } from '../../utils/preact';
+import type { GameApi, Location, Message, Player } from './GameApi';
 import { saveGame, loadGame, saveGameExists, GameState } from './persistence';
 
 type Props = Readonly<{
@@ -17,12 +17,24 @@ type Props = Readonly<{
 }>;
 
 export const useApi = (props: Props): GameApi => {
-  const [_location, setLocation] = useState(props.location);
-  const location = _location!;
-  const [message, setMessage] = useState<string | null>(null);
+  const [location, setLocation] = useState<Location>(props.location);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [player, setPlayer] = useState<Player>(props.player);
+  const [turn, setTurn] = useState<number>(1);
+  const [booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
 
-  const [_player, setPlayer] = useState<Player>(props.player);
-  const player = _player!;
+  const addMessage = (message: string) => {
+    setMessages(messages => [
+      ...messages,
+      { message, turn }
+    ]);
+  };
+  const clearMessages = () => setMessages([]);
+  const getActiveMessages = (): string[] => {
+    return messages
+      .filter(message => message.turn === turn)
+      .map(({ message }) => message);
+  };
 
   const addGold = (amount: number) => {
     setPlayer(player => ({
@@ -38,7 +50,7 @@ export const useApi = (props: Props): GameApi => {
       gold: player.gold - cost,
       inventory: [...player.inventory, itemName]
     }));
-    setMessage(`Bought a ${itemName}`);
+    addMessage(`Bought a ${itemName}`);
   };
 
   const buySpell = (spellName: string, cost: number) => {
@@ -48,7 +60,7 @@ export const useApi = (props: Props): GameApi => {
       gold: player.gold - cost,
       spells: [...player.spells, spellName]
     });
-    setMessage(`Bought a ${spellName}`);
+    addMessage(`Bought a ${spellName}`);
   };
 
   const acceptQuest = (questName: string) => {
@@ -56,7 +68,7 @@ export const useApi = (props: Props): GameApi => {
       ...player,
       quests: [...player.quests, questName]
     });
-    setMessage(`Accepted quest: ${questName}`);
+    addMessage(`Accepted quest: ${questName}`);
   };
 
   const completeQuest = (questName: string) => {
@@ -64,24 +76,21 @@ export const useApi = (props: Props): GameApi => {
       ...player,
       quests: player.quests.filter(q => q !== questName)
     });
-    setMessage(`Completed quest: ${questName}`);
+    addMessage(`Completed quest: ${questName}`);
   };
 
   const moveTo = (location: Location) => {
-    console.log('in moveTo');
     setLocation(location);
-    setMessage(null);
+    setTurn(turn => turn + 1);
   };
 
-  const gameOver = () => {
-    alert('Game over!');
+  const reset = () => {
     setPlayer(props.player);
     setLocation(props.location);
-    setMessage(null);
+    clearMessages();
+    setTurn(1);
+    setBooleans(props.variables?.booleans ?? {});
   };
-
-  const [_booleans, setBooleans] = useState<Record<string, boolean>>(props.variables?.booleans ?? {});
-  const booleans = _booleans!;
 
   const getBoolean = (name: string): boolean | undefined => booleans[name];
   const setBoolean = (name: string, value: boolean) => {
@@ -91,27 +100,33 @@ export const useApi = (props: Props): GameApi => {
     }));
   };
 
+  const gameOver = () => {
+    alert('Game over!');
+    reset();
+  };
+
   const handleSaveGame = () => {
-    const state: GameState = { location, message, player, booleans };
+    const state: GameState = { location, messages, player, booleans };
     saveGame(state);
-    setMessage('Game Saved.');
+    addMessage('Game Saved.');
   };
 
   const handleLoadGame = () => {
-    const { location, message, player, booleans } = loadGame();
+    const { location, messages, player, booleans } = loadGame();
     setLocation(location);
-    setMessage('Game Loaded.'); // overwrites message, oh well
+    addMessage('Game Loaded.'); // overwrites message, oh well
     setPlayer(player);
     setBooleans(booleans);
   };
 
   return {
+    turn,
     location,
     moveTo,
     player,
     addGold,
-    message,
-    setMessage,
+    getActiveMessages,
+    addMessage,
     buyItem,
     buySpell,
     acceptQuest,

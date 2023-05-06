@@ -22,5 +22,6 @@ export enum BooleanFlag {
   CATACOMBS_KOBOLD = 'catacombs_kobold',
   JOINED_EARTH_CULT = 'joined_earth_cult',
   UNLOCKED_TEMPLE = 'unlocked_temple',
-  TOWN_ON_FIRE = 'town_on_fire'
+  TOWN_ON_FIRE = 'town_on_fire',
+  HEAVEN_PRIESTESS = 'heaven_priestess'
 }

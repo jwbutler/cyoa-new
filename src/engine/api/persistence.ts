@@ -1,6 +1,7 @@
 import type { Player, Location, Message } from './GameApi';
 
 export type GameState = Readonly<{
+  turn: number,
   location: Location,
   messages: Message[],
   player: Player,

@@ -106,17 +106,18 @@ export const useApi = (props: Props): GameApi => {
   };
 
   const handleSaveGame = () => {
-    const state: GameState = { location, messages, player, booleans };
+    const state: GameState = { turn, location, messages, player, booleans };
     saveGame(state);
     addMessage('Game Saved.');
   };
 
   const handleLoadGame = () => {
-    const { location, messages, player, booleans } = loadGame();
+    const { turn, location, messages, player, booleans } = loadGame();
+    setTurn(turn);
     setLocation(location);
-    addMessage('Game Loaded.'); // overwrites message, oh well
     setPlayer(player);
     setBooleans(booleans);
+    addMessage('Game Loaded.');
   };
 
   return {

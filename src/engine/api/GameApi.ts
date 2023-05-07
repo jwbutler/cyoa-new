@@ -22,8 +22,8 @@ export type Message = Readonly<{
   turn: number
 }>;
 
-export type GameApi = {
-  turn: number
+export type GameApi = Readonly<{
+  turn: number,
   location: Location,
   moveTo: (location: Location) => void,
   player: Player,
@@ -41,4 +41,4 @@ export type GameApi = {
   saveGame: () => void,
   loadGame: () => void,
   saveGameExists: () => boolean
-};
+}>;

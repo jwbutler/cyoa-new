@@ -1,11 +1,9 @@
-import type { JSX } from 'preact';
-
 type Props = Readonly<{
   src: string,
   style?: Record<string, unknown>
 }>;
 
-export const Image = ({ src, style }: Props): JSX.Element => (
+export const Image = ({ src, style }: Props) => (
   <img
     src={src}
     alt={src}

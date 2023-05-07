@@ -1,7 +1,7 @@
 import { checkArgument } from '../../utils/preconditions';
 import { useState } from '../../utils/preact';
 import type { GameApi, Location, Message, Player } from './GameApi';
-import { saveGame, loadGame, saveGameExists, GameState } from './persistence';
+import { saveGame, loadGame, saveGameExists, SaveState } from './persistence';
 
 type Props = Readonly<{
   player: {
@@ -106,7 +106,7 @@ export const useApi = (props: Props): GameApi => {
   };
 
   const handleSaveGame = () => {
-    const state: GameState = { turn, location, messages, player, booleans };
+    const state: SaveState = { turn, location, messages, player, booleans };
     saveGame(state);
     addMessage('Game Saved.');
   };

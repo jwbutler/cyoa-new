@@ -11,10 +11,12 @@ export const Footer = () => {
       <pre>
         <div>Turn: {api.turn}</div>
         <div>Gold: {player.gold}</div>
-        <div>Items: {JSON.stringify(player.inventory)}</div>
-        <div>Spells: {JSON.stringify(player.spells)}</div>
-        <div>Quests: {JSON.stringify(player.quests)}</div>
-        <div>Boolean Flags: {JSON.stringify(api.booleanFlags, null, 2)}</div>
+        {/*
+          <div>Items: {JSON.stringify(player.inventory)}</div>
+          <div>Spells: {JSON.stringify(player.spells)}</div>
+          <div>Quests: {JSON.stringify(player.quests)}</div>
+          <div>Boolean Flags: {JSON.stringify(api.booleanFlags, null, 2)}</div>
+        */}
       </pre>
       <Links>
         <Link onClick={() => api.saveGame()}>Save Game</Link>

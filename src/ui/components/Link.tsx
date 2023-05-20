@@ -27,6 +27,8 @@ export const Link = ({ to, direction, onClick, children }: Props) => {
         }
         e.preventDefault();
       }}
+      tabindex="0"
+      autofocus
     >
       {children}
     </a>

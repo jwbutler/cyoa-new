@@ -8,13 +8,17 @@
   padding: 0.5em;
   margin: 0.25em 0;
   display: inline-block;
+  outline: none;
 }
 
 .link:visited {
   color: var(--color-text);
 }
 
-.link:hover,.link:active {
-  color: var(--color-text);
+.link:hover,.link:active,.link:focus {
   text-decoration: underline;
+}
+
+.link:focus {
+  background-color: var(--color-background-highlight);
 }

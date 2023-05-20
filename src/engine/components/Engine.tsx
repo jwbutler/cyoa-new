@@ -3,6 +3,7 @@ import { checkNotNull } from '../../utils/preconditions';
 import { ApiContext } from '../api/ApiContext';
 import type { Direction, Location } from '../api/GameApi';
 import { useApi } from '../api/useApi';
+import { useEffect } from 'preact/compat';
 
 export type ContainerProps = Readonly<{
   children: ComponentChildren
@@ -44,6 +45,32 @@ export const Engine = ({
     player,
     variables,
     location: startingLocation
+  });
+
+  useEffect(() => {
+    const focusableElements = [...document.querySelectorAll('[tabindex="0"]')];
+    let index = focusableElements.indexOf(document.activeElement);
+    console.log(focusableElements);
+    if (index < 0) {
+      focusableElements[0].focus();
+    }
+    const keyHandler = (e: KeyboardEvent) => {
+      const focusableElements = [...document.querySelectorAll('[tabindex="0"]')];
+      let index = focusableElements.indexOf(document.activeElement);
+      console.log(focusableElements);
+      switch (e.key) {
+        case 'ArrowDown':
+          index = (index + 1) % focusableElements.length;
+          focusableElements[index].focus();
+          break;
+        case 'ArrowUp':
+          index = (index === 0) ? focusableElements.length - 1 : index - 1;
+          focusableElements[index].focus();
+          break;
+      }
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
   });
 
   const { scene, direction } = api.location;

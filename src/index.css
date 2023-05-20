@@ -9,4 +9,5 @@ body {
   color: var(--color-text);
   font-size: 20px;
   font-family: 'Courier New', monospace;
+  overflow: hidden;
 }

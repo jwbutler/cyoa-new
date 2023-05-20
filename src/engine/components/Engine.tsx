@@ -47,17 +47,20 @@ export const Engine = ({
     location: startingLocation
   });
 
+  // probably need to memoize this or some shit
   useEffect(() => {
     const focusableElements = [...document.querySelectorAll('[tabindex="0"]')];
     let index = focusableElements.indexOf(document.activeElement);
-    console.log(focusableElements);
     if (index < 0) {
       focusableElements[0].focus();
     }
+  });
+
+  // probably need to memoize this or some shit
+  useEffect(() => {
     const keyHandler = (e: KeyboardEvent) => {
       const focusableElements = [...document.querySelectorAll('[tabindex="0"]')];
       let index = focusableElements.indexOf(document.activeElement);
-      console.log(focusableElements);
       switch (e.key) {
         case 'ArrowDown':
           index = (index + 1) % focusableElements.length;

@@ -20,8 +20,9 @@ export enum QuestName {
 
 export enum BooleanFlag {
   CATACOMBS_KOBOLD = 'catacombs_kobold',
+  HEAVEN_PRIESTESS = 'heaven_priestess',
   JOINED_EARTH_CULT = 'joined_earth_cult',
-  UNLOCKED_TEMPLE = 'unlocked_temple',
   TOWN_ON_FIRE = 'town_on_fire',
-  HEAVEN_PRIESTESS = 'heaven_priestess'
+  UNLOCKED_EARTH_TEMPLE = 'unlocked_earth_temple',
+  UNLOCKED_HEAVEN_TEMPLE = 'unlocked_heaven_temple'
 }

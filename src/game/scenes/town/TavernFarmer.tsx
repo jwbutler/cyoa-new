@@ -62,7 +62,7 @@ export const TavernFarmer = () => {
                   onClick={() => {
                     api.acceptQuest(QuestName.FARMER_KOBOLDS);
                     api.addGold(20);
-                    api.setBoolean(BooleanFlag.UNLOCKED_TEMPLE, true);
+                    api.setBoolean(BooleanFlag.UNLOCKED_EARTH_TEMPLE, true);
                     setDialogOption('third');
                   }}
                 >

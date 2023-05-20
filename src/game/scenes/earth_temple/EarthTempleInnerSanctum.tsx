@@ -30,6 +30,7 @@ export const EarthTempleInnerSanctum = () => {
     api.completeQuest(QuestName.FARMER_KOBOLDS);
     api.setBoolean(BooleanFlag.JOINED_EARTH_CULT, true);
     api.setBoolean(BooleanFlag.TOWN_ON_FIRE, true);
+    api.setBoolean(BooleanFlag.UNLOCKED_HEAVEN_TEMPLE, true);
   };
 
   const renderContent = () => {

@@ -41,7 +41,7 @@ const player = {
 const variables = {
   booleans: {
     [BooleanFlag.CATACOMBS_KOBOLD]: true,
-    [BooleanFlag.UNLOCKED_TEMPLE]: false,
+    [BooleanFlag.UNLOCKED_EARTH_TEMPLE]: false,
     [BooleanFlag.JOINED_EARTH_CULT]: false,
     [BooleanFlag.TOWN_ON_FIRE]: false,
     [BooleanFlag.HEAVEN_PRIESTESS]: true

@@ -12,7 +12,7 @@ import temple_exterior from '../../images/temple_exterior.png';
 
 export const OutsideEarthTemple = () => {
   const api = useContext(ApiContext);
-  const unlockedTemple = api.getBoolean(BooleanFlag.UNLOCKED_TEMPLE);
+  const unlockedTemple = api.getBoolean(BooleanFlag.UNLOCKED_EARTH_TEMPLE);
 
   const renderContent = () => {
     if (unlockedTemple) {
